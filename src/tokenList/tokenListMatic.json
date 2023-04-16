@@ -1,0 +1,28 @@
+[
+  
+    {
+    "name": "Wrapped  Matic",
+    "symbol": "WMATIC",
+    "address": "0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889",
+    "decimals": 18,
+    "chainId": 80001,
+   "logoURI":"https://i.ibb.co/3SK7fXf/matic.jpg"
+  },
+  
+  {
+    "name": "Stormswap Token",
+    "symbol": "STT",
+    "address": "0x3eECde42973B0b5157e81e14caDCfe22700B6Bea",
+    "decimals": 18,
+    "chainId": 80001,
+    "logoURI": "https://assets.coingecko.com/coins/images/13744/small/symbol-whitebg200x200.png?1611377553"
+  },
+  {
+    "name": "Testswap",
+    "symbol": "tsp",
+    "address": "0x884A73e3507592C078d5dB791299a2eB646AA665",
+    "decimals": 18,
+    "chainId": 80001,
+    "logoURI": "https://assets.coingecko.com/coins/images/13744/small/symbol-whitebg200x200.png?1611377553"
+  }
+]
