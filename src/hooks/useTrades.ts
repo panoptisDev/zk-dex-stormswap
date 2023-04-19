@@ -21,7 +21,7 @@ import useActiveWeb3React from "../hooks/useActiveWeb3React";
 import { getAddress } from "@ethersproject/address";
 
 const localTokens: { [index: string]: Array<any> } = {
-  // 1: tokenListEthereum,
+  // 1: tokenListEthereum,s
   // 4: tokenListLocalRinkeby.ethereum,
   // 97: tokenListLocalRinkeby.bsc,
   // 56: tokenListBsc,

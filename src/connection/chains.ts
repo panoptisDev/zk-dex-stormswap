@@ -55,7 +55,7 @@ export const NATIVE_TOKEN: { [index: number]: string } = {
   97: "BNB",
   56: "BNB",
   137: "MATIC",
-  80001: "MATIC",
+  80001: "WMATIC",
   1666600000: "ONE",
   1666700000: "ONE",
 };
@@ -137,7 +137,7 @@ const CHAIN_INFO: any = {
     // infoLink: 'https://info.uniswap.org/#/',
     label: "Mumbai",
     // logoUrl: ethereumLogoUrl,
-    nativeCurrency: { name: "Mumbai", symbol: "MATIC", decimals: 18 },
+    nativeCurrency: { name: "WMATIC", symbol: "WMATIC", decimals: 18 },
     // color: darkTheme.chain_1,
   },
   [SupportedChainId.GOERLI]: {
@@ -158,7 +158,7 @@ const CHAIN_INFO: any = {
     explorer: "`https://testnet.bscscan.com`",
     // infoLink: 'https://info.uniswap.org/#/polygon/',
     label: "BSC Testnet",
-    // logoUrl: polygonMaticLogo,
+    // logoUrl: polygonWMATICLogo,
     nativeCurrency: { name: "BNB", symbol: "bnb", decimals: 18 },
   },
   [SupportedChainId.BSC]: {
@@ -169,7 +169,7 @@ const CHAIN_INFO: any = {
     explorer: "`https://bscscan.com`",
     // infoLink: 'https://info.uniswap.org/#/polygon/',
     label: "Binance Smart Chain",
-    // logoUrl: polygonMaticLogo,
+    // logoUrl: polygonWMATICLogo,
     nativeCurrency: { name: "BNB", symbol: "bnb", decimals: 18 },
   },
 };

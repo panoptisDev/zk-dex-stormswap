@@ -40,17 +40,17 @@ export const FALLBACK_URLS: any = {
   [SupportedChainId.POLYGON]: [
     // "Safe" URLs
     "https://polygon-rpc.com/",
-    "https://rpc-mainnet.matic.network",
-    "https://matic-mainnet.chainstacklabs.com",
-    "https://rpc-mainnet.maticvigil.com",
-    "https://rpc-mainnet.matic.quiknode.pro",
-    "https://matic-mainnet-full-rpc.bwarelabs.com",
+    "https://rpc-mainnet.WMATIC.network",
+    "https://WMATIC-mainnet.chainstacklabs.com",
+    "https://rpc-mainnet.WMATICvigil.com",
+    "https://rpc-mainnet.WMATIC.quiknode.pro",
+    "https://WMATIC-mainnet-full-rpc.bwarelabs.com",
   ],
   [SupportedChainId.POLYGON_MUMBAI]: [
     // "Safe" URLs
-    "https://matic-mumbai.chainstacklabs.com",
-    "https://rpc-mumbai.maticvigil.com",
-    "https://matic-testnet-archive-rpc.bwarelabs.com",
+    "https://WMATIC-mumbai.chainstacklabs.com",
+    "https://rpc-mumbai.WMATICvigil.com",
+    "https://WMATIC-testnet-archive-rpc.bwarelabs.com",
   ],
   [SupportedChainId.ARBITRUM_ONE]: [
     // "Safe" URLs

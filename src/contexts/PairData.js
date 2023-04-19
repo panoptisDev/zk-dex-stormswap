@@ -371,7 +371,7 @@ const getPairTransactions = async (pairAddress, chainId = 1) => {
   return transactions;
 };
 
-const getPairChartData = async (pairAddress, chainId = 1) => {
+const getPairChartData = async (pairAddress, chainId = 80001) => {
   let data = [];
   try {
     const utcEndTime = dayjs.utc();
