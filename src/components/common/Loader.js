@@ -11,13 +11,7 @@ const Loader = () => {
   const classes = useStyles();
 
   return (
-    <div>
-      <img
-        src="https://thumbs.gfycat.com/LameDifferentBalloonfish-small.gif"
-        alt="loader"
-        className={classes.loader}
-      />
-    </div>
+    <div class="lds-circle"><div></div></div>
   );
 };
 

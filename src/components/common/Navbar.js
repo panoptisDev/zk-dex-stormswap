@@ -277,8 +277,6 @@ const Navbar = ({ account: { currentChain } }) => {
           <div>
             <a
               href="/launchpad"
-              target="_blank"
-              rel="noreferrer"
               className={classes.navbarItemsDesktop}
             >
               Launchpad 
