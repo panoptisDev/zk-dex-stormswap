@@ -315,7 +315,7 @@ const Navbar = ({ account: { currentChain } }) => {
 
           <div className={classes.grow} />
 
-          <NetworkSelect />
+          {/* <NetworkSelect /> */}
           <Wallet />
         </Toolbar>
 
@@ -332,7 +332,7 @@ const Navbar = ({ account: { currentChain } }) => {
           </div>
 
           <div className=" d-flex  align-items-center">
-            <NetworkSelect />
+            {/* <NetworkSelect /> */}
             <Wallet />
             {["bottom"].map((anchor) => (
               <React.Fragment key={anchor}>

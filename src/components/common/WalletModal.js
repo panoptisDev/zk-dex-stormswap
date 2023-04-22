@@ -161,8 +161,9 @@ const WalletModal = ({ popupActive, resetPopup }) => {
     (wallet) => {
       if (wallet === "metamask") {
         if (!isMetaMaskInstalled()) {
+          // "https://metamask.app.link/dapp/swap.polkabridge.org/"
           window.open(
-            "https://metamask.app.link/dapp/swap.polkabridge.org/",
+            "https://metamask.app.link/dapp",
             "_blank",
             "noopener,noreferrer"
           );
@@ -173,8 +174,9 @@ const WalletModal = ({ popupActive, resetPopup }) => {
       }
 
       if (wallet === "trustWallet") {
+        // "https://link.trustwallet.com/open_url?coin_id=637&url=https://swap.polkabridge.org/
         window.open(
-          "https://link.trustwallet.com/open_url?coin_id=637&url=https://swap.polkabridge.org/",
+          "https://link.trustwallet.com",
           "_blank",
           "noopener,noreferrer"
         );
@@ -287,7 +289,7 @@ const WalletModal = ({ popupActive, resetPopup }) => {
                   }}
                   mt={3}
                 >
-                  By connecting a wallet, you agree to Polkabridge AMM Terms of
+                  By connecting a wallet, you agree to StormSwap Terms of
                   Service and consent to its Privacy Policy.
                 </Typography>
               </Box>

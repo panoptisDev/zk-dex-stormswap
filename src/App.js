@@ -88,9 +88,9 @@ function App() {
               <Route exact path="/liquidity" component={AddLiquidity} />
               <Route exact path="/stake" component={Staking} />
               <Route exact path="/launchpad" component={Launchpad} />
-              {/* <Route exact path="/charts" component={Analytics} />
+              <Route exact path="/charts" component={Analytics} />
               <Route exact path="/charts/tokens" component={AllTopToken} />
-              <Route exact path="/charts/pools" component={AllTopPool} /> */}
+              <Route exact path="/charts/pools" component={AllTopPool} />
 
               <Switch>
                 <Route
@@ -143,9 +143,9 @@ function App() {
               </Switch>
             </BrowserRouter>
           </div>
-          <div className={classes.footer}>
+          {/* <div className={classes.footer}>
             <Footer />
-          </div>
+          </div> */}
         </div>
       </ThemeProvider>
     </Suspense>
