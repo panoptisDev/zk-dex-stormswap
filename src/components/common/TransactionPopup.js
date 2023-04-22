@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
   message: {
     marginTop: 15,
-    color: theme.palette.textColors.heading,
+    color: theme.palette.textColors.headingWhite,
     fontSize: 16,
   },
   image: {
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 18,
     fontWeight: 400,
 
-    color: theme.palette.textColors.heading,
+    color: theme.palette.textColors.headingWhite,
   },
 }));
 
@@ -78,11 +78,11 @@ const TransactionPopup = ({ dex: { transaction }, onClose }) => {
               />
 
               <div className="text-center  mt-5 mb-4 ">
-                <div className={classes.heading}>Waiting for confirmaton</div>
+                <div className={classes.heading}  style={{color:"#fff"}}>Waiting for confirmaton</div>
                 <div className="mt-2"></div>
 
                 <div className="mt-5 mb-2">
-                  <span className={classes.message}>
+                  <span className={classes.message} style={{color:"#fff"}}>
                     Please confirm transaction in your wallet{" "}
                   </span>
                 </div>
@@ -96,7 +96,7 @@ const TransactionPopup = ({ dex: { transaction }, onClose }) => {
                 alt="Submitted"
                 className={classes.image}
               />
-              <h6 className={classes.message}>Transaction Submitted</h6>
+              <h6 className={classes.message} style={{color:"#fff"}}>Transaction Submitted</h6>
               <a
                 href={urls.showTransaction(transaction.hash, chainId)}
                 target="_blank"
@@ -115,7 +115,7 @@ const TransactionPopup = ({ dex: { transaction }, onClose }) => {
                 alt="success"
                 className={classes.image}
               />{" "}
-              <h6 className={classes.message}>Transaction Succeed</h6>
+              <h6 className={classes.message} style={{color:"#fff"}}>Transaction Succeed</h6>
               <a
                 href={urls.showTransaction(transaction.hash, chainId)}
                 target="_blank"
@@ -136,7 +136,7 @@ const TransactionPopup = ({ dex: { transaction }, onClose }) => {
                   alt="failed"
                   className={classes.image}
                 />
-                <h6 className={classes.message}>Transaction Failed</h6>
+                <h6 className={classes.message} style={{color:"#fff"}}>Transaction Failed</h6>
                 <a
                   href={urls.showTransaction(transaction.hash, chainId)}
                   target="_blank"
@@ -157,7 +157,7 @@ const TransactionPopup = ({ dex: { transaction }, onClose }) => {
                   alt="Submitted"
                   className={classes.image}
                 />
-                <h6 className={classes.message}> Cancelled</h6>
+                <h6 className={classes.message} style={{color:"#fff"}}> Cancelled</h6>
               </div>
             )}
         </div>

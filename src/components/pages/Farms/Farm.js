@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: 10,
     fontSize: 14,
     paddingBottom: 3,
-    color: theme.palette.textColors.heading,
+    color: theme.palette.textColors.headingWhite,
     paddingTop: 2,
   },
   link: {
@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 24,
     paddingBottom: 3,
 
-    color: theme.palette.textColors.subheading,
+    color: theme.palette.textColors.subheadingWhite,
   },
   tokenAmount: {
     fontWeight: 600,
@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
   },
   earn: {
     textAlign: "center",
-    color: theme.palette.textColors.subheading,
+    color: theme.palette.textColors.subheadingWhite,
     fontSize: 14,
     fontWeight: 600,
     border: "1px solid #C80C81",
@@ -91,8 +91,7 @@ const useStyles = makeStyles((theme) => ({
   },
   farmName: {
     textAlign: "center",
-    color: theme.palette.textColors.heading,
-
+    color: theme.palette.textColors.headingWhite,
     fontSize: 15,
     fontWeight: 600,
   },
@@ -104,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
   },
   harvestButton: {
     backgroundColor: theme.palette.primary.iconBack,
-    color: theme.palette.textColors.heading,
+    color: theme.palette.textColors.headingWhite,
     textTransform: "none",
     fontSize: 17,
     width: 110,
@@ -121,7 +120,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   approveBtn: {
-    backgroundColor: theme.palette.primary.pbr,
+    backgroundColor: theme.palette.primary.pbrSwap,
     color: theme.palette.primary.buttonText,
     textTransform: "none",
     fontSize: 17,
@@ -138,7 +137,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   stakeBtn: {
-    backgroundColor: theme.palette.primary.pbr,
+    backgroundColor: theme.palette.primary.pbrSwap,
     color: theme.palette.primary.buttonText,
     textTransform: "none",
     fontSize: 28,

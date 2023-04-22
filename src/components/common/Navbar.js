@@ -20,6 +20,7 @@ import NetworkSelect from "./NetworkSelect";
 import { loadTokens } from "../../actions/dexActions";
 import useActiveWeb3React from "../../hooks/useActiveWeb3React";
 import { Divider } from "@material-ui/core";
+import { Link } from "react-feather";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -151,30 +152,30 @@ const Navbar = ({ account: { currentChain } }) => {
         {[
           {
             name: "Stake",
-            link: "https://stake.polkabridge.org/",
+            link: "/stake",
             id: "staking",
             icon: <EqualizerOutlined />,
           },
-          {
-            name: "Farm",
-            link: "https://farm.polkabridge.org/",
-            id: "intro",
-            icon: <TouchAppOutlined />,
-          },
+          // {
+          //   name: "Farm",
+          //   link: "https://farm.polkabridge.org/",
+          //   id: "intro",
+          //   icon: <TouchAppOutlined />,
+          // },
           {
             name: "Launchpad",
-            link: "https://launchpad.polkabridge.org/",
+            link: "/launchpad",
             id: "characters",
             icon: <PeopleAltOutlined />,
           },
-          {
-            name: "INO",
-            link: "https://ino.polkabridge.org/",
-            id: "characters",
-            icon: <PeopleAltOutlined />,
-          },
+          // {
+          //   name: "INO",
+          //   link: "https://ino.polkabridge.org/",
+          //   id: "characters",
+          //   icon: <PeopleAltOutlined />,
+          // },
           { name: "Swap", link: "/", id: "items", icon: <SwapVertIcon /> },
-          { name: "P2P", link: "https://p2p.polkabridge.org/", id: "p2p", icon: <PeopleAltOutlined /> },
+          // { name: "P2P", link: "https://p2p.polkabridge.org/", id: "p2p", icon: <PeopleAltOutlined /> },
         ].map((tab, index) => (
           <ListItem button key={tab.name} onClick={toggleDrawer(anchor, false)}>
             <a href={tab.link}>
@@ -254,14 +255,15 @@ const Navbar = ({ account: { currentChain } }) => {
           {/* <div className={classes.leftMargin} /> */}
 
           <div>
-            <a
-              href="https://stake.polkabridge.org/"
+          <a
+              href="/stake"
               className={classes.navbarItemsDesktop}
+              style={{ color: "#fff" }}
             >
               Stake 
             </a>
           </div>
-          <div>
+          {/* <div>
             <a
               href="https://farm.polkabridge.org"
               target="_blank"
@@ -271,10 +273,10 @@ const Navbar = ({ account: { currentChain } }) => {
               Farm
               
             </a>
-          </div>
+          </div> */}
           <div>
             <a
-              href="https://launchpad.polkabridge.org"
+              href="/launchpad"
               target="_blank"
               rel="noreferrer"
               className={classes.navbarItemsDesktop}
@@ -283,7 +285,7 @@ const Navbar = ({ account: { currentChain } }) => {
             </a>
           </div>
 
-          <div>
+          {/* <div>
             <a
               href="https://ino.polkabridge.org"
               target="_blank"
@@ -292,7 +294,7 @@ const Navbar = ({ account: { currentChain } }) => {
             >
               INO 
             </a>
-          </div>
+          </div> */}
           <div>
             <a
               href="/"
@@ -302,7 +304,7 @@ const Navbar = ({ account: { currentChain } }) => {
               Swap 
             </a>
           </div>
-          <div>
+          {/* <div>
             <a
               href="https://p2p.polkabridge.org"
               target="_blank"
@@ -311,7 +313,7 @@ const Navbar = ({ account: { currentChain } }) => {
             >
               P2P 
             </a>
-          </div>
+          </div> */}
 
           <div className={classes.grow} />
 

@@ -18,13 +18,13 @@ import { useTokenData } from "contexts/TokenData";
 const useStyles = makeStyles((theme) => ({
   title: {
     textAlign: "center",
-    color: theme.palette.textColors.heading,
+    color: theme.palette.textColors.headingWhite,
     fontSize: 36,
     fontWeight: 600,
   },
   subTitle: {
     textAlign: "center",
-    color: theme.palette.textColors.subheading,
+    color: theme.palette.textColors.subheadingWhite,
     fontSize: 24,
     fontWeight: 600,
     [theme.breakpoints.down("md")]: {

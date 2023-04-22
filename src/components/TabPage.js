@@ -181,7 +181,7 @@ const TabPage = ({ data = 1 }) => {
             Farms{" "}
           </div>
         </Link>
-        <Link to="/charts" className={classes.noDecoration}>
+        {/* <Link to="/charts" className={classes.noDecoration}>
           {" "}
           <div
             className={
@@ -189,13 +189,9 @@ const TabPage = ({ data = 1 }) => {
             }
           >
             Charts{" "}
-            {/* <img
-              src="https://cdn-icons-png.flaticon.com/512/478/478544.png"
-              alt="charts"
-              style={{ height: 16, marginTop: -5, marginLeft: 5 }}
-            /> */}
+            
           </div>
-        </Link>
+        </Link> */}
       </div>
 
       <TabPanel data={0} index={0}>

@@ -67,12 +67,12 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 18,
     fontWeight: 400,
 
-    color: theme.palette.textColors.heading,
+    color: theme.palette.textColors.headingWhite,
   },
   subheading: {
     fontSize: 13,
     fontWeight: 400,
-    color: theme.palette.textColors.subheading,
+    color: theme.palette.textColors.subheadingWhite,
   },
 
   tokenCard: {
@@ -110,14 +110,14 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 12,
   },
   icon: {
-    color: theme.palette.primary.iconColor,
+    color: theme.palette.primary.iconColorGold,
     transition: "all 0.4s ease",
     fontSize: 22,
     borderRadius: 30,
   },
   message: {
     marginTop: 15,
-    color: theme.palette.textColors.heading,
+    color: theme.palette.textColors.headingWhite,
     fontSize: 16,
   },
 }));
@@ -216,7 +216,7 @@ const TransactionConfirm = (props) => {
                       {selectedToken0.symbol}
                     </span>
                   </div>
-                  <span>
+                  <span style={{color:"#fff"}}>
                     <NumberFormat
                       displayType="text"
                       value={token1Value}
@@ -243,7 +243,7 @@ const TransactionConfirm = (props) => {
                       {selectedToken1.symbol}
                     </span>
                   </div>
-                  <span>
+                  <span style={{color:"#fff"}}>
                     <NumberFormat
                       displayType="text"
                       value={token2Value}
@@ -268,10 +268,10 @@ const TransactionConfirm = (props) => {
 
               <div className={classes.tokenCard}>
                 <div className="d-flex justify-content-between w-100 mt-1 mb-1 ">
-                  <span className={classes.detailTitle}>
+                  <span className={classes.detailTitle} style={{color:"#fff"}}>
                     Liquidity provider fee
                   </span>
-                  <span className={classes.detailValue}>
+                  <span className={classes.detailValue} style={{color:"#fff"}}>
                     <NumberFormat
                       displayType="text"
                       value={getPercentageAmount(token1Value, "0.2 ")}
@@ -282,8 +282,8 @@ const TransactionConfirm = (props) => {
                 </div>
 
                 <div className="d-flex justify-content-between w-100 mt-1 mb-1 ">
-                  <span className={classes.detailTitle}>Price impact</span>
-                  <span className={classes.detailValue}>
+                  <span className={classes.detailTitle} style={{color:"#fff"}}>Price impact</span>
+                  <span className={classes.detailValue} style={{color:"#fff"}}>
                     -{" "}
                     <NumberFormat
                       displayType="text"
@@ -294,8 +294,8 @@ const TransactionConfirm = (props) => {
                   </span>
                 </div>
                 <div className="d-flex justify-content-between w-100 mt-1 mb-1 ">
-                  <span className={classes.detailTitle}>Minimum received</span>
-                  <span className={classes.detailValue}>
+                  <span className={classes.detailTitle} style={{color:"#fff"}}>Minimum received</span>
+                  <span className={classes.detailValue} style={{color:"#fff"}}>
                     <NumberFormat
                       displayType="text"
                       value={token2Value}
@@ -306,10 +306,10 @@ const TransactionConfirm = (props) => {
                 </div>
 
                 <div className="d-flex justify-content-between w-100 mt-1 mb-1 ">
-                  <span className={classes.detailTitle}>
+                  <span className={classes.detailTitle} style={{color:"#fff"}}>
                     Slippage tolerance
                   </span>
-                  <span className={classes.detailValue}>
+                  <span className={classes.detailValue} style={{color:"#fff"}}>
                     {swapSettings.slippage} %
                   </span>
                 </div>
