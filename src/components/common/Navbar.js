@@ -25,11 +25,15 @@ const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
   },
+  spanLogoText: {
+    fontWeight: 700,
+  },
   appBarBackground: {
     boxShadow: "none",
-    backgroundColor: "#ffffff",
+    backgroundColor: "#370937",
     display: "flex",
     alignItems: "center",
+    justifyContent:"space-between !important",
     borderBottom: "0.5px solid #e5e5e5",
   },
   menuButton: {
@@ -47,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
   sectionDesktop: {
     marginLeft: 40,
     marginRight: 40,
+    width:"100%",
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
@@ -85,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "9px 14px 0px",
     cursor: "pointer",
     fontSize: "1.05vw",
-    color: theme.palette.primary.appLink,
+    color: theme.palette.common.white,
   },
   leftMargin: {
     marginLeft: 159,
@@ -236,23 +241,24 @@ const Navbar = ({ account: { currentChain } }) => {
         className={classes.appBarBackground}
       >
         <Toolbar className={classes.sectionDesktop}>
-          <a href="/">
+          <a href="/" style={{fontSize:"26px", backgroundColor:"#C369A5", height:"100%", padding:"1rem"}}>
             {" "}
             <img
               alt="logo"
-              src="https://polkabridge.org/logo.png"
+              src="https://res.cloudinary.com/advantage-health-africa/image/upload/v1682006941/title-logo_ictfbb.png" 
               className={classes.logo}
             />
+            <span className={classes.spanLogoText}>STORM</span>SWAP
           </a>
 
-          <div className={classes.leftMargin} />
+          {/* <div className={classes.leftMargin} /> */}
 
           <div>
             <a
               href="https://stake.polkabridge.org/"
               className={classes.navbarItemsDesktop}
             >
-              Stake <DotCircle />
+              Stake 
             </a>
           </div>
           <div>
@@ -263,7 +269,7 @@ const Navbar = ({ account: { currentChain } }) => {
               className={classes.navbarItemsDesktop}
             >
               Farm
-              <DotCircle />
+              
             </a>
           </div>
           <div>
@@ -273,7 +279,7 @@ const Navbar = ({ account: { currentChain } }) => {
               rel="noreferrer"
               className={classes.navbarItemsDesktop}
             >
-              Launchpad <DotCircle />
+              Launchpad 
             </a>
           </div>
 
@@ -284,16 +290,16 @@ const Navbar = ({ account: { currentChain } }) => {
               rel="noreferrer"
               className={classes.navbarItemsDesktop}
             >
-              INO <DotCircle />
+              INO 
             </a>
           </div>
           <div>
             <a
               href="/"
               className={classes.navbarItemsDesktop}
-              style={{ color: "#DF097C" }}
+              style={{ color: "#fff" }}
             >
-              Swap <DotCircle />
+              Swap 
             </a>
           </div>
           <div>
@@ -303,7 +309,7 @@ const Navbar = ({ account: { currentChain } }) => {
               rel="noreferrer"
               className={classes.navbarItemsDesktop}
             >
-              P2P <DotCircle />
+              P2P 
             </a>
           </div>
 
@@ -319,7 +325,7 @@ const Navbar = ({ account: { currentChain } }) => {
               <img
                 alt="logo"
                 variant="square"
-                src="https://polkabridge.org/logo.png"
+                src="https://res.cloudinary.com/advantage-health-africa/image/upload/v1682006941/title-logo_ictfbb.png"
                 className={classes.logo}
               />
             </a>

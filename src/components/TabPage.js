@@ -120,7 +120,7 @@ const TabPage = ({ data = 1 }) => {
 
   return (
     <div className="d-flex flex-column align-items-center justify-centent-center">
-      <div className="d-flex">
+      {/* <div className="d-flex">
         <div className={classes.certikLabel}>
           AMM audited by{" "}
           <a
@@ -148,7 +148,7 @@ const TabPage = ({ data = 1 }) => {
             Hacken
           </a>
         </div>
-      </div>
+      </div> */}
       <div className={classes.tabs}>
         <Link to="/" className={classes.noDecoration}>
           {" "}

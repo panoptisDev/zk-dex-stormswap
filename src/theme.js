@@ -7,7 +7,7 @@ export const theme = createMuiTheme({
       disabledBackground: "rgb(237, 238, 242)",
     },
     common: {
-      black: "#000",
+      black: "#150215",
       white: "#fff",
     },
     background: {
@@ -25,8 +25,11 @@ export const theme = createMuiTheme({
     },
     textColors: {
       heading: "#000000",
+      headingWhite: "#fff",
       subheading: "#454545",
       light: "#757575",
+      lightWhite: "#fff",
+      lightBorder:"#C128BD",
       pbr: "rgba(224, 7, 125, 1)",
       secondary: "#E0077D",
       textPrimary: "#ffffff",
@@ -36,10 +39,12 @@ export const theme = createMuiTheme({
     },
     primary: {
       pbr: "rgba(224, 7, 125, 1)",
-      iconBack: "rgb(237, 238, 242)",
-      iconColor: "#212121",
+      pbrSwap:"linear-gradient(90deg, #C229BE 0%, #591359 100%)",
+      iconBack: "#150215",
+      iconColor: "#C369A5",
+      iconColorGold:"#FFA900",
       appLink: "#212121",
-      bgCard: "#ffffff",
+      bgCard: "#150215",
       buttonText: "#ffffff",
       buttonColor: "#bdbdbd",
       tokenBack: "#212121",

@@ -107,9 +107,9 @@ const SelectToken = ({
         {selectedToken.symbol && <TokenIcon address={selectedToken?.address} />}
 
         {!selectedToken.symbol ? (
-          <span className={classes.selectToken}>Select</span>
+          <span style={{color:"white"}} className={classes.selectToken}>Select</span>
         ) : (
-          <span className={classes.selectedToken}>{selectedToken.symbol}</span>
+          <span style={{color:"white"}} className={classes.selectedToken}>{selectedToken.symbol}</span>
         )}
         <ArrowDropDownIcon className={classes.dropIcon} />
       </span>

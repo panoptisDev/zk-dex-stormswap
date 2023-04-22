@@ -204,7 +204,7 @@ const useStyles = makeStyles((theme) => ({
   },
   addLiquidityButton: {
     marginTop: 20,
-    backgroundColor: theme.palette.primary.pbr,
+    backgroundImage: theme.palette.primary.pbrSwap,
     color: "white",
     width: "95%",
     textTransform: "none",
@@ -855,7 +855,7 @@ const AddCard = (props) => {
           </div>
 
           <div className={classes.cardFeature}>
-            <span className={classes.cardTitle}>Select pair</span>
+            <span className={classes.cardTitle} style={{color:"white"}}>Select pair</span>
             <span className={classes.clearButton} onClick={handleClearState}>
               Clear all
             </span>
@@ -887,33 +887,33 @@ const AddCard = (props) => {
           {selectedToken0.symbol && selectedToken1.symbol ? (
             <div style={{ width: "95%" }}>
               <div className={classes.cardSubHeading}>
-                <span className={classes.hintStyle}>Prices and Pool share</span>
+                <span className={classes.hintStyle} style={{color:"white"}}>Prices and Pool share</span>
               </div>
 
               <div className={classes.selectPoolContainer}>
                 <div className={classes.feeSelectContainer}>
-                  <div className={classes.feeSelectHeading}>
+                  <div className={classes.feeSelectHeading} style={{color:"white"}}>
                     {getPriceRatio(token1Value, token2Value)}
                   </div>
-                  <span className={classes.feeSelectHeadingSpan}>
+                  <span className={classes.feeSelectHeadingSpan} style={{color:"white"}}>
                     {`${selectedToken0.symbol} per ${selectedToken1.symbol}`}
                   </span>
                 </div>
 
                 <div className={classes.feeSelectContainer}>
-                  <div className={classes.feeSelectHeading}>
+                  <div className={classes.feeSelectHeading} style={{color:"white"}}>
                     {getPriceRatio(token2Value, token1Value)}
                   </div>
-                  <span className={classes.feeSelectHeadingSpan}>
+                  <span className={classes.feeSelectHeadingSpan} style={{color:"white"}}>
                     {`${selectedToken1.symbol} per ${selectedToken0.symbol}`}
                   </span>
                 </div>
 
                 <div className={classes.feeSelectContainer}>
-                  <div className={classes.feeSelectHeading}>
+                  <div className={classes.feeSelectHeading} style={{color:"white"}}>
                     {`${currentPoolShare}%`}
                   </div>
-                  <span className={classes.feeSelectHeadingSpan}>
+                  <span className={classes.feeSelectHeadingSpan} style={{color:"white"}}>
                     Share of pool
                   </span>
                 </div>
@@ -924,7 +924,7 @@ const AddCard = (props) => {
           )}
 
           <div style={{ marginBottom: 10, width: "95%" }}>
-            <span className={classes.hintStyle}>
+            <span className={classes.hintStyle} style={{color:"white"}}>
               By adding liquidity you'll earn 0.2% of all trades on this pair
               proportional to your share of the pool.
             </span>

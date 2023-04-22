@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     minHeight: 100,
     backgroundColor: theme.palette.primary.bgCard,
-    border: "0.5px solid rgba(224, 224, 224,0.6)",
+    border: "0.5px solid #C128BD",
 
     borderRadius: 15,
     paddingBottom: 0,
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
   labelFont: {
     fontSize: 14,
-    color: theme.palette.textColors.heading,
+    color: theme.palette.textColors.headingWhite,
 
     [theme.breakpoints.down("sm")]: {
       fontSize: 14,
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
   hintLabelFont: {
     fontSize: 11,
-    color: theme.palette.textColors.light,
+    color: theme.palette.textColors.lightBorder,
     [theme.breakpoints.down("sm")]: {
       fontSize: 14,
     },
@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
     borderColor: "transparent",
     fontSize: 20,
     fontWeight: 500,
-    color: theme.palette.textColors.heading,
+    color: theme.palette.textColors.headingWhite,
     maxWidth: 150,
     outline: "none",
     [theme.breakpoints.down("sm")]: {
@@ -155,12 +155,13 @@ const SwapCardItem = (props) => {
                 selectedToken={currentToken}
                 disableToken={disableToken}
                 handleTokenSelected={onTokenChange}
+                style={{color:"white"}}
               />
             </div>
           </div>
           {new BigNumber(priceUSD).gt(0) && inputType === "to" && (
             <div className={classes.labelRow}>
-              <p className={classes.hintLabelFont}>
+              <p className={classes.hintLabelFont} style={{color:"white"}}>
                 ~ $
                 {formattedNum(
                   new BigNumber(inputValue).gt(0)

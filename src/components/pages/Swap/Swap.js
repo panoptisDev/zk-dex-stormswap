@@ -60,10 +60,21 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: 20,
     paddingRight: 20,
     paddingTop: 15,
-    paddingBottom: 15,
+    paddingBottom: 25,
+    marginLeft:"auto",
+    marginRight:"auto",
     [theme.breakpoints.down("sm")]: {
       paddingLeft: 7,
       paddingRight: 7,
+      width: "96%",
+    },
+  },
+  cardOverall: {
+    width: "96%",
+    maxWidth: 500,
+    boxShadow:"none",
+    backgroundColor:"transparent",
+    [theme.breakpoints.down("sm")]: {
       width: "96%",
     },
   },
@@ -77,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: 15,
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "flex-start",
+    alignItems: "center"
   },
   settingIcon: {
     color: theme.palette.primary.iconColor,
@@ -89,13 +100,14 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   iconButton: {
-    margin: 0,
+    margin: "30px 0 30px 0",
     padding: 2,
     backgroundColor: theme.palette.primary.iconBack,
     borderRadius: "30%",
+
   },
   swapIcon: {
-    color: theme.palette.primary.iconColor,
+    color: theme.palette.primary.iconColorGold,
     marginTop: -12,
     marginBottom: -12,
     borderRadius: "36%",
@@ -106,14 +118,43 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 28,
     backgroundColor: theme.palette.primary.iconBack,
   },
-  swapButton: {
+  advancedButton:{
     marginTop: 30,
-    backgroundColor: theme.palette.primary.pbr,
-    color: "white",
-    width: "95%",
+    backgroundColor: theme.palette.common.black,
+    color: "#fff",
+    width: "100%",
     textTransform: "none",
     fontSize: 19,
     borderRadius: 20,
+    marginLeft:"auto",
+    marginRight:"auto",
+    marginBottom:"30px",
+    willChange: "transform",
+    transition: "transform 450ms ease 0s",
+    transform: "perspective(1px) translateZ(0px)",
+    padding: "12px 50px 12px 50px",
+    "&:hover": {
+      background: theme.palette.common.black,
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 14,
+    }
+  },
+  centerItems:{
+    display:"flex",
+    justtifyContent:"space-between",
+    alignItems: "center",
+  },
+  swapButton: {
+    marginTop: 30,
+    backgroundImage: theme.palette.primary.pbrSwap,
+    color: "#fff",
+    width: "100%",
+    textTransform: "none",
+    fontSize: 19,
+    borderRadius: 20,
+    marginLeft:"auto",
+    marginRight:"auto",
     willChange: "transform",
     transition: "transform 450ms ease 0s",
     transform: "perspective(1px) translateZ(0px)",
@@ -140,7 +181,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 30,
   },
   tokenPrice: {
-    color: theme.palette.textColors.heading,
+    color: theme.palette.textColors.headingWhite,
     textAlign: "right",
     width: 430,
     fontSize: 13,
@@ -150,9 +191,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   infoIcon: {
-    color: "white",
+    color: "#fff",
     fontSize: 16,
-    color: "#bdbdbd",
   },
   txDetailsCard: {
     backgroundColor: "black",
@@ -161,17 +201,17 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 10,
     marginTop: 5,
     padding: 14,
-    color: "#bdbdbd",
+    color: "#fff",
     fontSize: 12,
   },
 
   txDetailsValue: {
-    color: "#ffffff",
+    color: "#fff",
     fontSize: 14,
     paddingBottom: 5,
   },
   heading: {
-    color: theme.palette.textColors.heading,
+    color: theme.palette.textColors.headingwhite,
     letterSpacing: -0.7,
     fontSize: 18,
     fontWeight: 500,
@@ -716,17 +756,18 @@ const Swap = (props) => {
         currentAccount={account}
       />
       <SwapSettings open={settingOpen} handleClose={close} />
+      
       <Card elevation={20} className={classes.card}>
         <div className={classes.cardContents}>
           <div className={classes.cardHeading}>
             <h6 className={classes.heading}>Swap </h6>
-            <IconButton className={classes.iconButton}>
+            {/* <IconButton className={classes.iconButton}>
               <Settings
                 fontSize="default"
                 onClick={handleSettings}
                 className={classes.settingIcon}
               />
-            </IconButton>
+            </IconButton> */}
           </div>
 
           <SwapCardItem
@@ -767,11 +808,12 @@ const Swap = (props) => {
               className="mt-2 d-flex justify-content-end"
               style={{ width: "95%" }}
             >
-              <div className={classes.tokenPrice}>
+              <div className={classes.tokenPrice} 
+              style={{ color:"white" }}>
                 {selectedToken0.symbol &&
                 selectedToken1.symbol &&
                 !currentSwapStatus.disabled ? (
-                  <span style={{ paddingRight: 5 }}>
+                  <span style={{ paddingRight: 5, color:"white" }}>
                     1 {selectedToken0.symbol} {" = "}
                     <NumberFormat
                       displayType="text"
@@ -786,7 +828,7 @@ const Swap = (props) => {
 
                 <Info
                   className={classes.infoIcon}
-                  style={{ marginTop: -3 }}
+                  style={{ marginTop: -3, color:"#fff !important" }}
                   onClick={handleTxPoper}
                   onMouseEnter={handleTxPoper}
                   onMouseLeave={() => setAnchorEl(null)}
@@ -794,13 +836,7 @@ const Swap = (props) => {
               </div>
             </div>
           )}
-          <Button
-            disabled={currentSwapStatus.disabled}
-            className={classes.swapButton}
-            onClick={handleAction}
-          >
-            {currentSwapStatus.currentBtnText}
-          </Button>
+          
         </div>
 
         <Popper id={id} open={open} anchorEl={anchorEl}>
@@ -819,6 +855,36 @@ const Swap = (props) => {
             </div>
           </div>
         </Popper>
+
+       
+      </Card>
+
+      <Card elevation={20} className={classes.cardOverall}>
+      <Button
+        className={classes.advancedButton}
+        style={{color:"white"}}
+        onClick={handleSettings}
+      >
+        <div onClick={handleSettings} 
+        className={classes.centerItems} style={{cursor:"pointer", width:"80%", justifyContent:"space-between", alignItems:"center"}}>
+          <p style={{margin:0}}>Advanced Options</p>
+          <Settings
+            fontSize="default"
+            onClick={handleSettings}
+            style={{color:"#C128BD"}}
+            className={classes.settingIcon}
+          />
+        </div>
+      </Button>
+
+      <Button
+        disabled={currentSwapStatus.disabled}
+        className={classes.swapButton}
+        style={{color:"white"}}
+        onClick={handleAction}
+      >
+        {currentSwapStatus.currentBtnText}
+      </Button>
       </Card>
     </>
   );
