@@ -104,6 +104,7 @@ const AddLiquidity = ({ account: { loading } }) => {
             <div className={classes.buttonsWrapper}>
               <Button
                 className={classes.button}
+                style={{color:"white"}}
                 onClick={() =>
                   setShowAdd({ status: true, component: "AddCard" })
                 }
@@ -112,6 +113,7 @@ const AddLiquidity = ({ account: { loading } }) => {
               </Button>
               <Button
                 className={classes.button}
+                style={{color:"white"}}
                 onClick={() =>
                   setShowAdd({ status: true, component: "RemoveCard" })
                 }

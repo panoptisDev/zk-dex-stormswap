@@ -933,6 +933,7 @@ const AddCard = (props) => {
           <Button
             disabled={currentAddLiquidityStatus.disabled}
             onClick={handleAction}
+            style={{color:"white"}}
             className={classes.addLiquidityButton}
           >
             {currentAddLiquidityStatus.currentBtnText}
