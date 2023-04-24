@@ -11,7 +11,7 @@ const Loader = () => {
   const classes = useStyles();
 
   return (
-    <div class="lds-circle"><div></div></div>
+    <div class="lds-hourglass"></div>
   );
 };
 

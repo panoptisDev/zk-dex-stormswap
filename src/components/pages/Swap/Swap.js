@@ -866,8 +866,8 @@ const Swap = (props) => {
         onClick={handleSettings}
       >
         <div onClick={handleSettings} 
-        className={classes.centerItems} style={{cursor:"pointer", width:"80%", justifyContent:"space-between", alignItems:"center"}}>
-          <p style={{margin:0}}>Advanced Options</p>
+        className={classes.centerItems} style={{cursor:"pointer", width:"80%", justifyContent:"center", alignItems:"center"}}>
+          <p style={{margin:0, marginRight:10}}>Advanced Options</p>
           <Settings
             fontSize="default"
             onClick={handleSettings}
