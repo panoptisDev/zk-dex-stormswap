@@ -11,7 +11,11 @@ const Loader = () => {
   const classes = useStyles();
 
   return (
-    <div class="lds-hourglass"></div>
+    <div class="loader-container">
+      <div class="box1"></div>
+      <div class="box2"></div>
+      <div class="box3"></div>
+    </div>
   );
 };
 
