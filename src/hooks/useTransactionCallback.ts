@@ -655,8 +655,9 @@ export function useTransactionCallback(): {
     console.log("trade test status updating ", transaction);
     if (
       transaction?.status === TransactionStatus.COMPLETED ||
-      transaction?.status === TransactionStatus.FAILED ||
-      transaction?.type?.includes("allowance") // watch other than allowance transactions
+      transaction?.status === TransactionStatus.FAILED || 
+      (transaction?.type && (Array.isArray(transaction.type) || 
+      typeof transaction.type === 'string') && transaction.type.includes("allowance")) // watch other than allowance transactions
     ) {
       return;
     }

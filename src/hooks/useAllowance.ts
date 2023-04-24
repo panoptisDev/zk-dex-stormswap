@@ -117,8 +117,9 @@ export function useTokenAllowance(
 
     if (
       transaction?.status === TransactionStatus.COMPLETED ||
-      transaction?.status === TransactionStatus.FAILED || !transaction?.type ||
-      !transaction?.type?.includes("allowance") // watch only allowance transactions
+      transaction?.status === TransactionStatus.FAILED || 
+      (transaction?.type && (Array.isArray(transaction.type) || 
+      typeof transaction.type === 'string') && transaction.type.includes("allowance")) // watch only allowance transactions
     ) {
       return;
     }
