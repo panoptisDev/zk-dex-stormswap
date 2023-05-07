@@ -246,7 +246,7 @@ const Navbar = ({ account: { currentChain } }) => {
             {" "}
             <img
               alt="logo"
-              src="https://res.cloudinary.com/advantage-health-africa/image/upload/v1682006941/title-logo_ictfbb.png" 
+              src="img/logo-white.png" 
               className={classes.logo}
             />
             <span className={classes.spanLogoText}>STORM</span>SWAP
