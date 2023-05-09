@@ -16,7 +16,6 @@ import BigNumber from "bignumber.js";
 import { Button } from "@material-ui/core";
 import { useTransactionCallback } from "hooks/useTransactionCallback";
 import { TransactionStatus } from "../../constants/index";
-import { whitelist } from "./whitelist";
 
 const styles = (theme) => ({
   root: {

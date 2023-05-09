@@ -688,21 +688,22 @@ const Swap = (props) => {
   ]);
 
 
-  const canSwap = () => {
+
+
+
+  const currentSwapStatus = useMemo(() => {
+    const canSwap = () => {
     if (whitelist.length === 0) {
       return true;
     }
     return whitelist.map(addr => addr.toLowerCase()).includes(account.toLowerCase());
   }
 
-
-
-  const currentSwapStatus = useMemo(() => {
     if (!isActive) {
       return { currentBtnText: "Connect Wallet", disabled: false };
     }
     if (isActive && !canSwap()) {
-       return { currentBtnText: "Wallet not whitelisted", disabled: true };
+      return { currentBtnText: "Wallet not whitelisted", disabled: true };
     }
     if (
       ["swap", "token_approve"].includes(transaction.type) &&
@@ -739,16 +740,7 @@ const Swap = (props) => {
   
 
     return { currentBtnText: "Swap", disabled: false };
-  }, [
-    isActive,
-    transaction,
-    userHasSpecifiedInputOutput,
-    noRoute,
-    allowance,
-    currencyBalances,
-    selectedToken0,
-    parsedToken1Value,
-  ]);
+  }, [isActive, transaction.type, transaction.status, userHasSpecifiedInputOutput, noRoute, currencyBalances, parsedToken1Value, allowance, account, selectedToken0?.symbol]);
 
   return (
     <>
