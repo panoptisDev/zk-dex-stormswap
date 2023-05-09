@@ -16,6 +16,7 @@ import BigNumber from "bignumber.js";
 import { Button } from "@material-ui/core";
 import { useTransactionCallback } from "hooks/useTransactionCallback";
 import { TransactionStatus } from "../../constants/index";
+import { whitelist } from "./whitelist";
 
 const styles = (theme) => ({
   root: {
@@ -144,6 +145,7 @@ const TransactionConfirm = (props) => {
   const classes = useStyles();
 
   const { swapTokens, resetTrxState } = useTransactionCallback();
+
   const onConfirmSwap = async () => {
     const _amount0InWei = toWei(token1Value, selectedToken0.decimals);
     const token0 = {
@@ -183,7 +185,7 @@ const TransactionConfirm = (props) => {
     }
     return false;
   };
-
+//  fdgufns a dialogbox to confirm swap
   return (
     <div>
       <Dialog

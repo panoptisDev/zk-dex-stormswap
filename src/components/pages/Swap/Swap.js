@@ -49,7 +49,7 @@ import { useCurrencyBalances } from "../../../hooks/useBalance";
 import { useUserAuthentication } from "../../../hooks/useUserAuthentication";
 import { useTokenAllowance } from "hooks/useAllowance";
 import { CONNECTOR_TYPE } from "connection/connectionConstants";
-
+import { whitelist } from "components/common/whitelist";
 const useStyles = makeStyles((theme) => ({
   card: {
     width: "96%",
@@ -687,11 +687,23 @@ const Swap = (props) => {
     wrappedCurrency1,
   ]);
 
+
+  const canSwap = () => {
+    if (whitelist.length === 0) {
+      return true;
+    }
+    return whitelist.map(addr => addr.toLowerCase()).includes(account.toLowerCase());
+  }
+
+
+
   const currentSwapStatus = useMemo(() => {
     if (!isActive) {
       return { currentBtnText: "Connect Wallet", disabled: false };
     }
-
+    if (isActive && !canSwap()) {
+       return { currentBtnText: "Wallet not whitelisted", disabled: true };
+    }
     if (
       ["swap", "token_approve"].includes(transaction.type) &&
       transaction.status === TransactionStatus.PENDING
@@ -724,6 +736,7 @@ const Swap = (props) => {
         disabled: false,
       };
     }
+  
 
     return { currentBtnText: "Swap", disabled: false };
   }, [
