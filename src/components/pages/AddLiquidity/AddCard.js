@@ -5,6 +5,9 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import SwapSettings from "../../common/SwapSettings";
 import SwapCardItem from "../Swap/SwapCardItem";
 import AddIcon from "@material-ui/icons/Add";
+import { whitelist } from "components/common/whitelist";
+
+
 import {
   allowanceAmount,
   corgibAllowance,
@@ -738,12 +741,22 @@ const AddCard = (props) => {
   ]);
 
   const currentAddLiquidityStatus = useMemo(() => {
+        const canSwap = () => {
+      if (whitelist.length === 0) {
+        return true;
+      }
+      return whitelist.map(addr => addr.toLowerCase()).includes(account.toLowerCase());
+    }
+    
     if (!isActive) {
       return { currentBtnText: "Connect Wallet", disabled: false };
     }
 
     if (localStateLoading) {
       return { currentBtnText: "Please wait...", disabled: true };
+    }
+    if (isActive && !canSwap()) {
+      return { currentBtnText: "Wallet not whitelisted", disabled: true };
     }
 
     if (
@@ -782,17 +795,7 @@ const AddCard = (props) => {
     }
 
     return { currentBtnText: "Add liquidity", disabled: false };
-  }, [
-    currApproveBtnText,
-    isActive,
-    localStateLoading,
-    transaction,
-    isBothTokensApproved,
-    currencyBalances,
-    parsedToken1Value,
-    parsedToken2Value,
-    currentPairAddress,
-  ]);
+  }, [isActive, localStateLoading, transaction.type, transaction.status, parsedToken1Value, parsedToken2Value, currencyBalances, isBothTokensApproved, currentPairAddress, account, currApproveBtnText]);
 
   // liquidity transaction status updates
   // useEffect(() => {
@@ -933,6 +936,7 @@ const AddCard = (props) => {
           <Button
             disabled={currentAddLiquidityStatus.disabled}
             onClick={handleAction}
+            style={{color:"white"}}
             className={classes.addLiquidityButton}
           >
             {currentAddLiquidityStatus.currentBtnText}

@@ -27,6 +27,7 @@ export const theme = createMuiTheme({
       heading: "#000000",
       headingWhite: "#fff",
       subheading: "#454545",
+      subheadingWhite: "#fff",
       light: "#757575",
       lightWhite: "#fff",
       lightBorder:"#C128BD",

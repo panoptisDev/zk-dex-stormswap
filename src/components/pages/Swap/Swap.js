@@ -49,7 +49,7 @@ import { useCurrencyBalances } from "../../../hooks/useBalance";
 import { useUserAuthentication } from "../../../hooks/useUserAuthentication";
 import { useTokenAllowance } from "hooks/useAllowance";
 import { CONNECTOR_TYPE } from "connection/connectionConstants";
-
+import { whitelist } from "components/common/whitelist";
 const useStyles = makeStyles((theme) => ({
   card: {
     width: "96%",
@@ -687,11 +687,24 @@ const Swap = (props) => {
     wrappedCurrency1,
   ]);
 
+
+
+
+
   const currentSwapStatus = useMemo(() => {
+    const canSwap = () => {
+    if (whitelist.length === 0) {
+      return true;
+    }
+    return whitelist.map(addr => addr.toLowerCase()).includes(account.toLowerCase());
+  }
+
     if (!isActive) {
       return { currentBtnText: "Connect Wallet", disabled: false };
     }
-
+    if (isActive && !canSwap()) {
+      return { currentBtnText: "Wallet not whitelisted", disabled: true };
+    }
     if (
       ["swap", "token_approve"].includes(transaction.type) &&
       transaction.status === TransactionStatus.PENDING
@@ -724,18 +737,10 @@ const Swap = (props) => {
         disabled: false,
       };
     }
+  
 
     return { currentBtnText: "Swap", disabled: false };
-  }, [
-    isActive,
-    transaction,
-    userHasSpecifiedInputOutput,
-    noRoute,
-    allowance,
-    currencyBalances,
-    selectedToken0,
-    parsedToken1Value,
-  ]);
+  }, [isActive, transaction.type, transaction.status, userHasSpecifiedInputOutput, noRoute, currencyBalances, parsedToken1Value, allowance, account, selectedToken0?.symbol]);
 
   return (
     <>
@@ -866,8 +871,8 @@ const Swap = (props) => {
         onClick={handleSettings}
       >
         <div onClick={handleSettings} 
-        className={classes.centerItems} style={{cursor:"pointer", width:"80%", justifyContent:"space-between", alignItems:"center"}}>
-          <p style={{margin:0}}>Advanced Options</p>
+        className={classes.centerItems} style={{cursor:"pointer", width:"80%", justifyContent:"center", alignItems:"center"}}>
+          <p style={{margin:0, marginRight:10}}>Advanced Options</p>
           <Settings
             fontSize="default"
             onClick={handleSettings}

@@ -16,6 +16,12 @@ const AddLiquidity = lazy(() => import("./components/pages/AddLiquidity"));
 const PoolDetail = lazy(() =>
   import("./components/pages/Analytics/components/DetailsPage/PoolDetail")
 );
+const Staking = lazy(() =>
+  import("./components/pages/Stake")
+);
+const Launchpad = lazy(() =>
+  import("./components/pages/Launchpad")
+);
 const Analytics = lazy(() => import("./components/pages/Analytics/Analytics"));
 const AllTopToken = lazy(() =>
   import("./components/pages/Analytics/components/Tables/AllTopToken")
@@ -80,6 +86,8 @@ function App() {
               <Route exact path="/" component={Swap} />
               <Route exact path="/farms" component={Farms} />
               <Route exact path="/liquidity" component={AddLiquidity} />
+              <Route exact path="/stake" component={Staking} />
+              <Route exact path="/launchpad" component={Launchpad} />
               <Route exact path="/charts" component={Analytics} />
               <Route exact path="/charts/tokens" component={AllTopToken} />
               <Route exact path="/charts/pools" component={AllTopPool} />
@@ -135,9 +143,9 @@ function App() {
               </Switch>
             </BrowserRouter>
           </div>
-          <div className={classes.footer}>
+          {/* <div className={classes.footer}>
             <Footer />
-          </div>
+          </div> */}
         </div>
       </ThemeProvider>
     </Suspense>

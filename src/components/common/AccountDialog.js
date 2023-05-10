@@ -25,12 +25,12 @@ const useStyles = makeStyles((theme) => ({
   heading: {
     fontSize: 18,
     fontWeight: 400,
-    color: theme.palette.textColors.heading,
+    color: theme.palette.textColors.headingWhite,
   },
   subheading: {
     fontSize: 19,
     fontWeight: 500,
-    color: theme.palette.textColors.subheading,
+    color: theme.palette.textColors.subheadingWhite,
 
     [theme.breakpoints.down("md")]: {
       fontSize: 19,
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
   cancelButton: {
     backgroundColor: theme.palette.primary.iconBack,
-    color: theme.palette.primary.iconColor,
+    color: theme.palette.primary.iconColorGold,
     borderColor: "#f6f6f6",
     width: 130,
     height: 40,
@@ -151,7 +151,7 @@ const AccountDialog = ({ open, handleClose, handleLogout }) => {
             </div>
           </div>
           <div className={classes.accountCard}>
-            <h6 style={{ fontWeight: 600, fontSize: 14, color: "#757575" }}>
+            <h6 style={{ fontWeight: 600, fontSize: 14, color: "#fff" }}>
               Wallet connected with:
             </h6>
             <a
@@ -169,7 +169,7 @@ const AccountDialog = ({ open, handleClose, handleLogout }) => {
               style={{
                 fontWeight: 600,
                 fontSize: 14,
-                color: "#757575",
+                color: "#fff",
                 marginTop: 20,
               }}
             >
@@ -187,8 +187,9 @@ const AccountDialog = ({ open, handleClose, handleLogout }) => {
                 <AccountBalanceWallet
                   fontSize="small"
                   className={classes.icon}
+                  style={{color:"white"}}
                 />
-                <span className={classes.icon}>{NATIVE_TOKEN?.[chainId]}</span>
+                <span style={{color:"white"}} className={classes.icon}>{NATIVE_TOKEN?.[chainId]}</span>
                 <span className={classes.numbers}>
                   {ethBalance ? ethBalance?.[account]?.toExact(4) : "0"}
                 </span>

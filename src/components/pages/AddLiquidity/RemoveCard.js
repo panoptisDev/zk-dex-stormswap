@@ -94,7 +94,7 @@ const useStyles = makeStyles((theme) => ({
     width: 150,
   },
   clearButton: {
-    color: theme.palette.textColors.pbr,
+    color: theme.palette.textColors.pbrSwap,
     cursor: "pointer",
     fontSize: 16,
     [theme.breakpoints.down("sm")]: {
@@ -119,7 +119,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "right",
     borderColor: "transparent",
     fontSize: 50,
-    color: theme.palette.textColors.heading,
+    color: theme.palette.textColors.headingWhite,
 
     outline: "none",
     marginTop: 5,
@@ -185,18 +185,18 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.textColors.pbr,
   },
   heading: {
-    color: theme.palette.textColors.heading,
+    color: theme.palette.textColors.headingWhite,
   },
   itemHeading: {
-    color: theme.palette.textColors.heading,
+    color: theme.palette.textColors.headingWhite,
     fontSize: 15,
   },
   itemValues: {
-    color: theme.palette.textColors.heading,
+    color: theme.palette.textColors.headingWhite,
     fontSize: 15,
   },
   priceValues: {
-    color: theme.palette.textColors.subheading,
+    color: theme.palette.textColors.subheadingWhite,
     fontSize: 14,
     paddingTop: 3,
   },
@@ -634,7 +634,7 @@ const RemoveCard = ({
                 <NumberInput
                   onInputChange={handleInputChange}
                   value={liquidityInputTemp}
-                  style={classes.input}
+                  style={classes.input }
                 />
               </div>
               <div className={classes.percentageSymbol}>%</div>
@@ -737,6 +737,7 @@ const RemoveCard = ({
           <Button
             disabled={disableStatus}
             onClick={handleAction}
+            style={{color:"white"}}
             className={classes.removeBtn}
           >
             {currentButton}
