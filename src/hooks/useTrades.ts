@@ -17,6 +17,7 @@ import tokenListLocalRinkeby from "../tokenList/tokenListTest.json";
 import tokenListEthereum from "../tokenList/tokenListEthereum.json";
 import tokenListBsc from "../tokenList/tokenListBsc.json";
 import tokenListMatic from "../tokenList/tokenListMatic.json";
+import tokenListZk from "../tokenList/tokenListZk.json";
 import useActiveWeb3React from "../hooks/useActiveWeb3React";
 import { getAddress } from "@ethersproject/address";
 
@@ -25,7 +26,8 @@ const localTokens: { [index: string]: Array<any> } = {
   // 4: tokenListLocalRinkeby.ethereum,
   // 97: tokenListLocalRinkeby.bsc,
   // 56: tokenListBsc,
-  80001: tokenListMatic
+  // 80001: tokenListMatic
+  324: tokenListZk
 };
 
 function getTokenWithSymbol(symbol: string, chainId: ChainId) {

@@ -38,7 +38,9 @@ import {
 // import ethereumtokens from "../tokenList/tokenListEthereum.json";
 // import testTokens from "../tokenList/tokenListTest.json";
 // import tokenListBsc from "../tokenList/tokenListBsc.json";
-import mumbaitokens from "../tokenList/tokenListMatic.json"
+// import mumbaitokens from "../tokenList/tokenListMatic.json"
+import zksynctokens from "../tokenList/tokenListZk.json"
+
 
 // swap transaction function
 export const swapTokens =
@@ -749,7 +751,8 @@ const localTokenList = {
   // 4: testTokens.ethereum,
   // 56: tokenListBsc,
   // 97: testTokens.bsc,
-  80001:mumbaitokens
+  // 80001:mumbaitokens
+  324: zksynctokens
 };
 export const loadTokens = (chainId) => async (dispatch) => {
   try {
@@ -758,7 +761,8 @@ export const loadTokens = (chainId) => async (dispatch) => {
     });
 
     // todo: fetch token list from network
-    const localTokens = localTokenList?.[!chainId ? 80001 : chainId];
+    // const localTokens = localTokenList?.[!chainId ? 80001 : chainId];
+    const localTokens = localTokenList?.[!chainId ? 324 : chainId];
 
     const cachedTokens = getCachedTokens();
     const allTokens =

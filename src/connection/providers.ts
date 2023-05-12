@@ -69,6 +69,9 @@ export const RPC_PROVIDERS: any = {
   [SupportedChainId.OPTIMISM]: new AppJsonRpcProvider(
     SupportedChainId.OPTIMISM
   ),
+  [SupportedChainId.ZKERA]: new AppJsonRpcProvider(
+    SupportedChainId.ZKERA
+  ),
   [SupportedChainId.ARBITRUM_ONE]: new AppJsonRpcProvider(
     SupportedChainId.ARBITRUM_ONE
   ),

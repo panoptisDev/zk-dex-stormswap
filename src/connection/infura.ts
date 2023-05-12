@@ -17,6 +17,10 @@ export const FALLBACK_URLS: any = {
     "https://rpc.ankr.com/eth",
     "https://eth-mainnet.public.blastapi.io",
   ],
+  [SupportedChainId.ZKERA]: [
+    // "Fallback" URLs
+    "https://mainnet.era.zksync.io",
+  ],
   [SupportedChainId.ROPSTEN]: [
     // "Fallback" URLs
     "https://rpc.ankr.com/eth_ropsten",
@@ -87,6 +91,11 @@ export const RPC_URLS: any = {
     `https://mainnet.infura.io/v3/${INFURA_KEY}`,
     ...FALLBACK_URLS[SupportedChainId.MAINNET],
   ],
+  [SupportedChainId.ZKERA]: [
+    // `https://mainnet.era.zksync.io`,
+    `https://zksync-era.rpc.thirdweb.com/`,
+    ...FALLBACK_URLS[SupportedChainId.ZKERA],
+  ],
   [SupportedChainId.RINKEBY]: [
     `https://rinkeby.infura.io/v3/${INFURA_KEY}`,
     ...FALLBACK_URLS[SupportedChainId.RINKEBY],
@@ -123,6 +132,7 @@ export const RPC_URLS: any = {
   [SupportedChainId.POLYGON_MUMBAI]: [
     `https://polygon-mumbai.infura.io/v3/${INFURA_KEY}`,
   ],
+ 
   [SupportedChainId.BSC_TESTNET]: [
     `https://rpc.ankr.com/bsc_testnet_chapel`,
     ...FALLBACK_URLS[SupportedChainId.BSC_TESTNET],

@@ -3,7 +3,8 @@ import axios from "axios";
 import {
   bscNetwork,
   moonriverNetwork,
-  mumbainetwork,
+  // mumbainetwork,
+  zksyncNetwork,
   REWARD_TOKEN_PER_YEAR,
 } from "../constants/index";
 
@@ -117,7 +118,7 @@ export const getPercentageAmount = (value, percent) => {
 
 // :todo remove this function after testing
 
-export const fetchTokenInfo = async (address, chainId = 80001) => {
+export const fetchTokenInfo = async (address, chainId = 324) => {
   const bscApiKey = process.env.REACT_APP_BSC_SCAN_API?.split("")
     .reverse()
     .join("");
@@ -311,12 +312,13 @@ export const getRewardApr = (
 export const getNetworkNameById = (networkId) => {
   if ([56, 97].includes(parseInt(networkId))) {
     return bscNetwork;
-  } else if ([137, 80001].includes(parseInt(networkId))) {
-    return mumbainetwork;
+  }
+  else if ([324, 280].includes(parseInt(networkId))) {
+    return zksyncNetwork;
   } else if ([1285, 1287].includes(parseInt(networkId))) {
     return moonriverNetwork;
   } else {
-    return mumbainetwork;
+    return zksyncNetwork;
   }
 };
 

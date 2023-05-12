@@ -110,12 +110,12 @@ export const formattedNum = (number, usd = false, acceptNegatives = false) => {
 };
 
 export const urls = {
-  showTransaction: (tx, chainId = 80001) => `${BLOCK_EXPLORER[chainId]}/tx/${tx}/`,
-  showAddress: (address, chainId = 80001) =>
+  showTransaction: (tx, chainId = 324) => `${BLOCK_EXPLORER[chainId]}/tx/${tx}/`,
+  showAddress: (address, chainId = 324) =>
     `${BLOCK_EXPLORER[chainId]}/address/${address}/`,
-  showToken: (address, chainId = 80001) =>
+  showToken: (address, chainId = 324) =>
     `${BLOCK_EXPLORER[chainId]}/token/${address}/`,
-  showBlock: (block, chainId = 80001) =>
+  showBlock: (block, chainId = 324) =>
     `${BLOCK_EXPLORER[chainId]}/block/${block}/`,
 };
 

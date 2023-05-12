@@ -1,0 +1,29 @@
+[
+    {
+      "name": "Wrapped ZkEther",
+      "symbol": "WETH",
+      "address": "0x5AEa5775959fBC2557Cc8789bC1bf90A239D9a91",
+      "decimals": 18,
+      "chainId": 324,
+     "logoURI":"https://i.ibb.co/rGJ8WyX/eth-logo.png"
+  
+    },
+  
+    
+    {
+      "name": "StormX",
+      "symbol": "STMx",
+      "address": "0x577e09A9385092BdcE0d0C3b5C980589c42b4A29",
+      "decimals": 18,
+      "chainId": 324,
+      "logoURI": "https://i.ibb.co/3YgWvQf/stormswap.jpg"
+    },
+    {
+      "name": "Zksync Era",
+      "symbol": "ETH",
+      "address": "0x5AEa5775959fBC2557Cc8789bC1bf90A239D9a91",
+      "decimals": 18,
+      "chainId": 324,
+      "logoURI": "https://i.ibb.co/rGJ8WyX/eth-logo.png"
+    }
+  ]

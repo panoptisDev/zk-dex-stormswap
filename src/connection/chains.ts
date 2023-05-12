@@ -1,9 +1,12 @@
+
+
 export enum SupportedChainId {
   MAINNET = 1,
   ROPSTEN = 3,
   RINKEBY = 4,
   GOERLI = 5,
   KOVAN = 42,
+  ZKERA = 324,
 
   BSC = 56,
   BSC_TESTNET = 97,
@@ -32,6 +35,7 @@ export const CHAIN_IDS_TO_NAMES = {
   [SupportedChainId.OPTIMISTIC_KOVAN]: "optimistic_kovan",
   [SupportedChainId.POLYGON]: "polygon",
   [SupportedChainId.POLYGON_MUMBAI]: "polygon_mumbai",
+  [SupportedChainId.ZKERA]: "zksync_era",
 };
 
 export const ALL_SUPPORTED_CHAIN_IDS: SupportedChainId[] = Object.values(
@@ -45,17 +49,20 @@ export const MULTICALL_ADDRESS: { [index: string]: string } = {
   // 97: "0x688EC8C059592104fC713E0dA9276e649302C4Ab",
   // 56: "0x6e568FcE995F5c7ddaFB8C0b74B3241328498F8A",
   // 137: "0xbfB508313126cf61CFb3BD7e570cC79C67998A53",
-  80001:"0xd85620D66D32952b97764dF14302498006Cf90fB"
+  // 80001:"0xd85620D66D32952b97764dF14302498006Cf90fB"
+  324: "0x7082C0A96921669fCbc73c1C072e205f991e1383"
 };
 
 export const NATIVE_TOKEN: { [index: number]: string } = {
-  1: "ETH",
-  4: "ETH",
-  5: "ETH",
-  97: "BNB",
-  56: "BNB",
-  137: "MATIC",
-  80001: "WMATIC",
+  // 1: "ETH",
+  // 4: "ETH",
+  // 5: "ETH",
+  // 97: "BNB",
+  // 56: "BNB",
+  // 137: "MATIC",
+  // 80001: "WMATIC",
+  324: "WETH",
+  // 324: "ETH",
   1666600000: "ONE",
   1666700000: "ONE",
 };
@@ -74,6 +81,11 @@ export const NETWORK_DETAILS = {
     chainId: `0x${SupportedChainId.MAINNET.toString(16)}`,
     chainName: CHAIN_IDS_TO_NAMES[SupportedChainId.MAINNET],
     chainRaw: SupportedChainId.MAINNET,
+  },
+  ZKERA: {
+    chainId: `0x${SupportedChainId.ZKERA.toString(16)}`,
+    chainName: CHAIN_IDS_TO_NAMES[SupportedChainId.ZKERA],
+    chainRaw: SupportedChainId.ZKERA,
   },
   POLYGON_MUMBAI: {
     chainId: `0x${SupportedChainId.POLYGON_MUMBAI.toString(16)}`,
@@ -128,6 +140,16 @@ const CHAIN_INFO: any = {
     label: "Ethereum",
     // logoUrl: ethereumLogoUrl,
     nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
+    // color: darkTheme.chain_1,
+  },
+  [SupportedChainId.ZKERA]: {
+    networkType: NetworkType.L1,
+    // docs: 'https://docs.uniswap.org/',
+    explorer: "https://explorer.zksync.io/",
+    // infoLink: 'https://info.uniswap.org/#/',
+    label: "Zksync",
+    // logoUrl: ethereumLogoUrl,
+    nativeCurrency: { name: "WETH", symbol: "WETH", decimals: 18 },
     // color: darkTheme.chain_1,
   },
   [SupportedChainId.POLYGON_MUMBAI]: {
@@ -187,9 +209,10 @@ export function isSupportedChain(
   return !!chainId && !!SupportedChainId[chainId];
 }
 
-export const FALLBACK_DEFAULT_CHAIN: number = SupportedChainId.POLYGON_MUMBAI; // Todo change this for release
+export const FALLBACK_DEFAULT_CHAIN: number = SupportedChainId.ZKERA; // Todo change this for release
 export const DAPP_SUPPORTED_ON_CHAINS: number[] = [
   SupportedChainId.MAINNET,
   SupportedChainId.BSC,
-  SupportedChainId.POLYGON_MUMBAI
+  SupportedChainId.POLYGON_MUMBAI,
+  SupportedChainId.ZKERA
 ];

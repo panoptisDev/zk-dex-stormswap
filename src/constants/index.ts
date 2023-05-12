@@ -1,8 +1,20 @@
+
+
 const testing = true;
 
 export const currentConnection = testing ? "testnet" : "mainnet";
 
 export const TOKEN_ADDRESS = {
+  ETH : {
+    324: "0x5AEa5775959fBC2557Cc8789bC1bf90A239D9a91"
+    
+  },
+  WETH :{
+    324: "0x5AEa5775959fBC2557Cc8789bC1bf90A239D9a91"
+  },
+  STMx:{
+    324: "0x577e09A9385092BdcE0d0C3b5C980589c42b4A29"
+  },
   Tst: {
     80001:"0x884A73e3507592C078d5dB791299a2eB646AA665"
 
@@ -28,10 +40,10 @@ export const TOKEN_ADDRESS = {
     1: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
     4: "0x4dbcdf9b62e891a7cec5a2568c3f4faf9e8abe2b",
   },
-  ETH: {
-    1: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
-    4: "0xc778417e063141139fce010982780140aa0cd5ab",
-  },
+  // ETH: {
+  //   1: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+  //   4: "0xc778417e063141139fce010982780140aa0cd5ab",
+  // },
   PWAR: {
     56: "0x16153214E683018D5aA318864c8e692b66E16778",
     97: "0x16153214E683018D5aA318864c8e692b66E16778",
@@ -47,11 +59,13 @@ export const TOKEN_ADDRESS = {
 };
 
 export const NATIVE_TOKEN_ADDRESS: { [index: string]: string } = {
-  1: TOKEN_ADDRESS.ETH[1],
-  4: TOKEN_ADDRESS.ETH[4],
-  56: TOKEN_ADDRESS.BNB[56],
-  97: TOKEN_ADDRESS.BNB[97],
-  80001: TOKEN_ADDRESS.WMATIC[80001]
+  // 1: TOKEN_ADDRESS.ETH[1],
+  // 4: TOKEN_ADDRESS.ETH[4],
+  // 56: TOKEN_ADDRESS.BNB[56],
+  // 97: TOKEN_ADDRESS.BNB[97],
+  // 80001: TOKEN_ADDRESS.WMATIC[80001],
+  324: TOKEN_ADDRESS.WETH[324]
+  // 324: TOKEN_ADDRESS.ETH[324]
 };
 
 export const ROUTER_ADDRESS: { [index: string]: string } = {
@@ -60,7 +74,8 @@ export const ROUTER_ADDRESS: { [index: string]: string } = {
   // 97: "0xCb4Ea1E2f7561edD414AF09d2df308986d4d7a29",
   // 56: "0x8547e2E16783Fdc559C435fDc158d572D1bD0970",
   // 80001: "0xb4903E541Bde5C915edD1CE9be817eAE92918147"
-  80001: "0xA25e4a127356556a6f02898dF917c1d842B19dEe"
+  // 80001: "0xA25e4a127356556a6f02898dF917c1d842B19dEe"
+  324: "0xB22eeFe3a73299a7b90045a5DfA624315C680502"
 };
 
 export const FACTORY_ADDRESS = {
@@ -69,7 +84,8 @@ export const FACTORY_ADDRESS = {
   // 97: "0xAeE1F15957C6c7AbDF245527b6497E96bDB17091",
   // 56: "0xDda79Ec4AF818D1e95F0A45B3E7e60461d5228cb",
   // 80001: "0xCcDEB3653D58ab48A1e44724F5243007954d8426"
-  80001:"0x6552da8c60a0ac0807b60ac997120f4ce0ab337b"
+  // 80001:"0x6552da8c60a0ac0807b60ac997120f4ce0ab337b"
+  324: "0xf7C0d93a508986d8b7d86bE0d3E9F38Cf34C00CD"
 };
 
 export const FARM_ADDRESS: { [index: string]: string } = {
@@ -84,7 +100,8 @@ export const MULTICALL_ADDRESS: { [index: string]: string } = {
   // 4: "0x6c4f9282bBD29992bF4F064F0165e805336Eef59",
   // 97: "0x688EC8C059592104fC713E0dA9276e649302C4Ab",
   // 56: "0x6e568FcE995F5c7ddaFB8C0b74B3241328498F8A",
-  80001:"0xd85620D66D32952b97764dF14302498006Cf90fB"
+  // 80001:"0xd85620D66D32952b97764dF14302498006Cf90fB"
+  324: "0x7082C0A96921669fCbc73c1C072e205f991e1383"
 };
 
 export const farmContractConfig = {
@@ -102,13 +119,17 @@ export const MOVR = "MOVR";
 export const WMATIC= "WMATIC";
 export const Tst = "Tst";
 export const STT = "STT";
+export const STMx= "STMx";
+export const WETH= "WETH";
 
 export const NATIVE_TOKEN: { [index: number]: string } = {
   // 1: ETH,
   // 4: ETH,
   // 97: BNB,
   // 56: BNB,
-  80001:WMATIC
+  // 80001:WMATIC
+  324: WETH
+  // 324: ETH
 };
 
 export const FARM_TOKEN: { [index: number]: string } = {
@@ -123,15 +144,19 @@ export const DEFAULT_SWAP_TOKENS = {
   // 4: ["ETH", "PBR"],
   // 97: ["BNB", "PWAR"],
   // 56: ["BNB", "PBR"],
-  80001: ["WMATIC", "STT"]
+  // 80001: ["WMATIC", "STT"]
+  324: ["WETH", "STMx"]
+  // 324: ["ETH", "STMx"]
 };
 
 export const DEFAULT_POOL_TOKENS = {
-  1: ["ETH", "PBR"], // token0 token1
-  4: ["ETH", "PBR"],
-  97: ["BNB", "PWAR"],
-  56: ["BNB", "PBR"],
-  80001:["WMATIC", "STT"]
+  // 1: ["ETH", "PBR"], // token0 token1
+  // 4: ["ETH", "PBR"],
+  // 97: ["BNB", "PWAR"],
+  // 56: ["BNB", "PBR"],
+  // 80001:["WMATIC", "STT"]
+  324: ["WETH", "STMx"]
+  // 324: ["ETH", "STMx"]
 };
 
 export const TOKEN_BLACKLIST = [];
@@ -146,9 +171,10 @@ export const bscNetwork = "bsc";
 export const moonriverNetwork = "moonriver";
 export const maticNetwork = "polygon";
 export const mumbainetwork= "mumbai";
+export const zksyncNetwork = "zksync";
 
 export const supportedChains = [
-  1, 4, 1285, 1287, 97, 56, 137, 80001, 1666700000, 1666600000,
+  1, 4, 1285, 1287, 97, 56, 137, 80001, 324, 1666700000, 1666600000,
 ];
 
 export const allowanceAmount = "9999999999999999999999999";
@@ -159,7 +185,8 @@ export const BLOCK_EXPLORER = {
   4: "https://rinkeby.etherscan.io",
   56: "https://bscscan.com",
   97: "https://testnet.bscscan.com",
-  80001: "https://mumbai.polygonscan.com/"
+  80001: "https://mumbai.polygonscan.com/",
+  324: "https://explorer.zksync.io/"
 };
 
 export const nullAddress = "0x0000000000000000000000000000000000000000";
@@ -312,6 +339,8 @@ export const SWAP_BASES: { [index: string]: Array<string> } = {
   56: ["BNB"], 
   137: [],
   80001: ["WMATIC", "STT"],
+  324: ["WETH", "STMx", "ETH"],
+  // 324: ["ETH", "STMx"],
   1666700000: [],
   1666600000: [],
 };
