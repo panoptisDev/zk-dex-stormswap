@@ -118,7 +118,7 @@ export const getPercentageAmount = (value, percent) => {
 
 // :todo remove this function after testing
 
-export const fetchTokenInfo = async (address, chainId = 324) => {
+export const fetchTokenInfo = async (address, chainId = 280) => {
   const bscApiKey = process.env.REACT_APP_BSC_SCAN_API?.split("")
     .reverse()
     .join("");

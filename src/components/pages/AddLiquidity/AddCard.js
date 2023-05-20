@@ -632,6 +632,7 @@ const AddCard = (props) => {
         };
       }
 
+
       await addLiquidity(
         etherToken.amount,
         erc20Token.amount,
@@ -646,6 +647,13 @@ const AddCard = (props) => {
 
       const _amount1 = toWei(parsedToken1Value, selectedToken0.decimals);
       const _amount2 = toWei(parsedToken2Value, selectedToken1.decimals);
+      console.log(_amount1,
+        _amount2,
+        selectedToken0,
+        selectedToken1,
+        swapSettings.deadline,
+        account,
+        chainId)
       await addLiquidity(
         _amount1,
         _amount2,
@@ -741,13 +749,13 @@ const AddCard = (props) => {
   ]);
 
   const currentAddLiquidityStatus = useMemo(() => {
-        const canSwap = () => {
+    const canSwap = () => {
       if (whitelist.length === 0) {
         return true;
       }
       return whitelist.map(addr => addr.toLowerCase()).includes(account.toLowerCase());
     }
-    
+
     if (!isActive) {
       return { currentBtnText: "Connect Wallet", disabled: false };
     }
@@ -858,7 +866,7 @@ const AddCard = (props) => {
           </div>
 
           <div className={classes.cardFeature}>
-            <span className={classes.cardTitle} style={{color:"white"}}>Select pair</span>
+            <span className={classes.cardTitle} style={{ color: "white" }}>Select pair</span>
             <span className={classes.clearButton} onClick={handleClearState}>
               Clear all
             </span>
@@ -890,33 +898,33 @@ const AddCard = (props) => {
           {selectedToken0.symbol && selectedToken1.symbol ? (
             <div style={{ width: "95%" }}>
               <div className={classes.cardSubHeading}>
-                <span className={classes.hintStyle} style={{color:"white"}}>Prices and Pool share</span>
+                <span className={classes.hintStyle} style={{ color: "white" }}>Prices and Pool share</span>
               </div>
 
               <div className={classes.selectPoolContainer}>
                 <div className={classes.feeSelectContainer}>
-                  <div className={classes.feeSelectHeading} style={{color:"white"}}>
+                  <div className={classes.feeSelectHeading} style={{ color: "white" }}>
                     {getPriceRatio(token1Value, token2Value)}
                   </div>
-                  <span className={classes.feeSelectHeadingSpan} style={{color:"white"}}>
+                  <span className={classes.feeSelectHeadingSpan} style={{ color: "white" }}>
                     {`${selectedToken0.symbol} per ${selectedToken1.symbol}`}
                   </span>
                 </div>
 
                 <div className={classes.feeSelectContainer}>
-                  <div className={classes.feeSelectHeading} style={{color:"white"}}>
+                  <div className={classes.feeSelectHeading} style={{ color: "white" }}>
                     {getPriceRatio(token2Value, token1Value)}
                   </div>
-                  <span className={classes.feeSelectHeadingSpan} style={{color:"white"}}>
+                  <span className={classes.feeSelectHeadingSpan} style={{ color: "white" }}>
                     {`${selectedToken1.symbol} per ${selectedToken0.symbol}`}
                   </span>
                 </div>
 
                 <div className={classes.feeSelectContainer}>
-                  <div className={classes.feeSelectHeading} style={{color:"white"}}>
+                  <div className={classes.feeSelectHeading} style={{ color: "white" }}>
                     {`${currentPoolShare}%`}
                   </div>
-                  <span className={classes.feeSelectHeadingSpan} style={{color:"white"}}>
+                  <span className={classes.feeSelectHeadingSpan} style={{ color: "white" }}>
                     Share of pool
                   </span>
                 </div>
@@ -927,7 +935,7 @@ const AddCard = (props) => {
           )}
 
           <div style={{ marginBottom: 10, width: "95%" }}>
-            <span className={classes.hintStyle} style={{color:"white"}}>
+            <span className={classes.hintStyle} style={{ color: "white" }}>
               By adding liquidity you'll earn 0.2% of all trades on this pair
               proportional to your share of the pool.
             </span>
@@ -936,7 +944,7 @@ const AddCard = (props) => {
           <Button
             disabled={currentAddLiquidityStatus.disabled}
             onClick={handleAction}
-            style={{color:"white"}}
+            style={{ color: "white" }}
             className={classes.addLiquidityButton}
           >
             {currentAddLiquidityStatus.currentBtnText}

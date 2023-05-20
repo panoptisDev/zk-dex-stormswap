@@ -1,0 +1,51 @@
+[
+	{
+		"name": "USDC",
+		"symbol": "USDC",
+		"address": "0x0faF6df7054946141266420b43783387A78d82A9",
+		"decimals": 18,
+		"chainId": 280,
+		"logoURI": "https://i.ibb.co/rGJ8WyX/eth-logo.png"
+	},
+
+	{
+		"name": "DAI",
+		"symbol": "DAI",
+		"address": "0x3e7676937A7E96CFB7616f255b9AD9FF47363D4b",
+		"decimals": 18,
+		"chainId": 280,
+		"logoURI": "https://i.ibb.co/3YgWvQf/stormswap.jpg"
+	},
+	{
+		"name": "Zksync Era",
+		"symbol": "ETH",
+		"address": "0x20b28B1e4665FFf290650586ad76E977EAb90c5D",
+		"decimals": 18,
+		"chainId": 280,
+		"logoURI": "https://i.ibb.co/rGJ8WyX/eth-logo.png"
+	},
+	{
+		"name": "CONE",
+		"symbol": "CONE",
+		"address": "0x55354D379f67177B42d5511EBaCBD12325b86209",
+		"decimals": 18,
+		"chainId": 280,
+		"logoURI": "https://i.ibb.co/rGJ8WyX/eth-logo.png"
+	},
+	{
+		"name": "Wbtc",
+		"symbol": "Wbtc",
+		"address": "0x0BfcE1D53451B4a8175DD94e6e029F7d8a701e9c",
+		"decimals": 18,
+		"chainId": 280,
+		"logoURI": "https://i.ibb.co/rGJ8WyX/eth-logo.png"
+	},
+	{
+		"name": "LINK",
+		"symbol": "LINK",
+		"address": "0x40609141Db628BeEE3BfAB8034Fc2D8278D0Cc78",
+		"decimals": 18,
+		"chainId": 280,
+		"logoURI": "https://i.ibb.co/rGJ8WyX/eth-logo.png"
+	}
+]

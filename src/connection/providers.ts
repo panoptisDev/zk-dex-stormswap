@@ -14,76 +14,83 @@ import { RPC_URLS } from "./infura";
 export const POLLING_INTERVAL = ms`12s`; // mainnet block frequency - ok for other chains as it is a sane refresh rate
 
 class AppJsonRpcProvider extends StaticJsonRpcProvider {
-  private _blockCache = new Map<string, Promise<any>>();
-  get blockCache() {
-    // If the blockCache has not yet been initialized this block, do so by
-    // setting a listener to clear it on the next block.
-    if (!this._blockCache.size) {
-      this.once("block", () => this._blockCache.clear());
-    }
-    return this._blockCache;
-  }
+	private _blockCache = new Map<string, Promise<any>>();
+	get blockCache() {
+		// If the blockCache has not yet been initialized this block, do so by
+		// setting a listener to clear it on the next block.
+		if (!this._blockCache.size) {
+			this.once("block", () => this._blockCache.clear());
+		}
+		return this._blockCache;
+	}
 
-  constructor(chainId: SupportedChainId) {
-    // Including networkish allows ethers to skip the initial detectNetwork call.
-    super(
-      RPC_URLS[chainId][0],
-      /* networkish= */ { chainId, name: CHAIN_IDS_TO_NAMES[chainId] }
-    );
-    this.pollingInterval = POLLING_INTERVAL;
-  }
+	constructor(chainId: SupportedChainId) {
+		// Including networkish allows ethers to skip the initial detectNetwork call.
+		super(
+			RPC_URLS[chainId][0],
+			/* networkish= */ { chainId, name: CHAIN_IDS_TO_NAMES[chainId] }
+		);
+		this.pollingInterval = POLLING_INTERVAL;
+	}
 
-  send(method: string, params: Array<any>): Promise<any> {
-    // Only cache eth_call's.
-    if (method !== "eth_call") return super.send(method, params);
+	send(method: string, params: Array<any>): Promise<any> {
+		// Only cache eth_call's.
+		if (method !== "eth_call") return super.send(method, params);
 
-    // Only cache if params are serializable.
-    if (!isPlain(params)) return super.send(method, params);
+		// Only cache if params are serializable.
+		if (!isPlain(params)) return super.send(method, params);
 
-    const key = `call:${JSON.stringify(params)}`;
-    const cached = this.blockCache.get(key);
-    if (cached) {
-      this.emit("debug", {
-        action: "request",
-        request: deepCopy({ method, params, id: "cache" }),
-        provider: this,
-      });
-      return cached;
-    }
+		const key = `call:${JSON.stringify(params)}`;
+		const cached = this.blockCache.get(key);
+		if (cached) {
+			this.emit("debug", {
+				action: "request",
+				request: deepCopy({ method, params, id: "cache" }),
+				provider: this,
+			});
+			return cached;
+		}
 
-    const result = super.send(method, params);
-    this.blockCache.set(key, result);
-    return result;
-  }
+		const result = super.send(method, params);
+		this.blockCache.set(key, result);
+		return result;
+	}
 }
 
 /**
  * These are the only JsonRpcProviders used directly by the interface.
  */
 export const RPC_PROVIDERS: any = {
-  [SupportedChainId.MAINNET]: new AppJsonRpcProvider(SupportedChainId.MAINNET),
-  [SupportedChainId.RINKEBY]: new AppJsonRpcProvider(SupportedChainId.RINKEBY),
-  [SupportedChainId.ROPSTEN]: new AppJsonRpcProvider(SupportedChainId.ROPSTEN),
-  [SupportedChainId.GOERLI]: new AppJsonRpcProvider(SupportedChainId.GOERLI),
-  [SupportedChainId.KOVAN]: new AppJsonRpcProvider(SupportedChainId.KOVAN),
-  [SupportedChainId.OPTIMISM]: new AppJsonRpcProvider(
-    SupportedChainId.OPTIMISM
-  ),
-  [SupportedChainId.ZKERA]: new AppJsonRpcProvider(
-    SupportedChainId.ZKERA
-  ),
-  [SupportedChainId.ARBITRUM_ONE]: new AppJsonRpcProvider(
-    SupportedChainId.ARBITRUM_ONE
-  ),
-  [SupportedChainId.ARBITRUM_RINKEBY]: new AppJsonRpcProvider(
-    SupportedChainId.ARBITRUM_RINKEBY
-  ),
-  [SupportedChainId.POLYGON]: new AppJsonRpcProvider(SupportedChainId.POLYGON),
-  [SupportedChainId.POLYGON_MUMBAI]: new AppJsonRpcProvider(
-    SupportedChainId.POLYGON_MUMBAI
-  ),
-  [SupportedChainId.BSC_TESTNET]: new AppJsonRpcProvider(
-    SupportedChainId.BSC_TESTNET
-  ),
-  [SupportedChainId.BSC]: new AppJsonRpcProvider(SupportedChainId.BSC),
+	[SupportedChainId.MAINNET]: new AppJsonRpcProvider(
+		SupportedChainId.MAINNET
+	),
+	[SupportedChainId.RINKEBY]: new AppJsonRpcProvider(
+		SupportedChainId.RINKEBY
+	),
+	[SupportedChainId.ROPSTEN]: new AppJsonRpcProvider(
+		SupportedChainId.ROPSTEN
+	),
+	[SupportedChainId.GOERLI]: new AppJsonRpcProvider(SupportedChainId.GOERLI),
+	[SupportedChainId.KOVAN]: new AppJsonRpcProvider(SupportedChainId.KOVAN),
+	[SupportedChainId.OPTIMISM]: new AppJsonRpcProvider(
+		SupportedChainId.OPTIMISM
+	),
+	[SupportedChainId.ZKERA]: new AppJsonRpcProvider(SupportedChainId.ZKERA),
+	[SupportedChainId.TZKERA]: new AppJsonRpcProvider(SupportedChainId.TZKERA),
+	[SupportedChainId.ARBITRUM_ONE]: new AppJsonRpcProvider(
+		SupportedChainId.ARBITRUM_ONE
+	),
+	[SupportedChainId.ARBITRUM_RINKEBY]: new AppJsonRpcProvider(
+		SupportedChainId.ARBITRUM_RINKEBY
+	),
+	[SupportedChainId.POLYGON]: new AppJsonRpcProvider(
+		SupportedChainId.POLYGON
+	),
+	[SupportedChainId.POLYGON_MUMBAI]: new AppJsonRpcProvider(
+		SupportedChainId.POLYGON_MUMBAI
+	),
+	[SupportedChainId.BSC_TESTNET]: new AppJsonRpcProvider(
+		SupportedChainId.BSC_TESTNET
+	),
+	[SupportedChainId.BSC]: new AppJsonRpcProvider(SupportedChainId.BSC),
 };

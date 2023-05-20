@@ -39,191 +39,191 @@ import {
 // import testTokens from "../tokenList/tokenListTest.json";
 // import tokenListBsc from "../tokenList/tokenListBsc.json";
 // import mumbaitokens from "../tokenList/tokenListMatic.json"
-import zksynctokens from "../tokenList/tokenListZk.json"
+import zksynctokens from "../tokenList/tokenListTZk.json"
 
 
 // swap transaction function
 export const swapTokens =
   (token0, token1, deadline, currentSwapFn, currenSwapPath, account, chainId) =>
-  async (dispatch) => {
-    try {
-      const _routerContract = routerContract(chainId);
+    async (dispatch) => {
+      try {
+        const _routerContract = routerContract(chainId);
 
-      const token0In = token0.amount;
+        const token0In = token0.amount;
 
-      const token1Min = 0; //token1.min;
+        const token1Min = 0; //token1.min;
 
-      const path = currenSwapPath;
-      const toAddress = account;
-      const _deadlineUnix = getUnixTime(deadline);
-      dispatch({
-        type: SHOW_DEX_LOADING,
-      });
-      dispatch({ type: START_TRANSACTION });
-
-      let swapPromise;
-      if (currentSwapFn === swapFnConstants.swapExactETHForTokens) {
-        //case 1 swapExactETHForTokens
-        swapPromise = _routerContract.methods
-          .swapExactETHForTokens(token1Min, path, toAddress, _deadlineUnix)
-          .send(
-            { from: account, value: token0In },
-            function (error, transactionHash) {
-              if (error) {
-                dispatch({
-                  type: UPDATE_TRANSACTION_STATUS,
-                  payload: { type: "swap", hash: null, status: "failed" },
-                });
-              } else {
-                dispatch({
-                  type: UPDATE_TRANSACTION_STATUS,
-                  payload: { type: "swap", hash: transactionHash },
-                });
-              }
-            }
-          );
-      } else if (currentSwapFn === swapFnConstants.swapETHforExactTokens) {
-        // case 2 swapETHforExactTokens
-        swapPromise = _routerContract.methods
-          .swapExactETHForTokens(token1Min, path, toAddress, _deadlineUnix)
-          .send(
-            { from: account, value: token0In },
-            function (error, transactionHash) {
-              if (error) {
-                dispatch({
-                  type: UPDATE_TRANSACTION_STATUS,
-                  payload: { type: "swap", hash: null, status: "failed" },
-                });
-              } else {
-                dispatch({
-                  type: UPDATE_TRANSACTION_STATUS,
-                  payload: { type: "swap", hash: transactionHash },
-                });
-              }
-            }
-          );
-      } else if (currentSwapFn === swapFnConstants.swapExactTokensForETH) {
-        // case 3 swapExactTokensForETH
-
-        swapPromise = _routerContract.methods
-          .swapExactTokensForETH(
-            token0In,
-            token1Min,
-            path,
-            toAddress,
-            _deadlineUnix
-          )
-          .send({ from: account }, function (error, transactionHash) {
-            if (error) {
-              dispatch({
-                type: UPDATE_TRANSACTION_STATUS,
-                payload: { type: "swap", hash: null, status: "failed" },
-              });
-            } else {
-              dispatch({
-                type: UPDATE_TRANSACTION_STATUS,
-                payload: { type: "swap", hash: transactionHash },
-              });
-            }
-          });
-      } else if (currentSwapFn === swapFnConstants.swapTokensForExactETH) {
-        // case 4  swapTokensForExactETH
-
-        swapPromise = _routerContract.methods
-          .swapExactTokensForETH(
-            token0In,
-            token1Min,
-            path,
-            toAddress,
-            _deadlineUnix
-          )
-          .send({ from: account }, function (error, transactionHash) {
-            if (error) {
-              dispatch({
-                type: UPDATE_TRANSACTION_STATUS,
-                payload: { type: "swap", hash: null, status: "failed" },
-              });
-            } else {
-              dispatch({
-                type: UPDATE_TRANSACTION_STATUS,
-                payload: { type: "swap", hash: transactionHash },
-              });
-            }
-          });
-      } else if (currentSwapFn === swapFnConstants.swapExactTokensForTokens) {
-        // case 5  swapExactTokensForTokens
-
-        swapPromise = _routerContract.methods
-          .swapExactTokensForTokens(
-            token0In,
-            token1Min,
-            path,
-            toAddress,
-            _deadlineUnix
-          )
-          .send({ from: account }, function (error, transactionHash) {
-            if (error) {
-              dispatch({
-                type: UPDATE_TRANSACTION_STATUS,
-                payload: { type: "swap", hash: null, status: "failed" },
-              });
-            } else {
-              dispatch({
-                type: UPDATE_TRANSACTION_STATUS,
-                payload: { type: "swap", hash: transactionHash },
-              });
-            }
-          });
-      } else {
-        // case 6 swapTokensForExactTokens
-
-        swapPromise = _routerContract.methods
-          .swapExactTokensForTokens(
-            token0In,
-            token1Min,
-            path,
-            toAddress,
-            _deadlineUnix
-          )
-          .send({ from: account }, function (error, transactionHash) {
-            if (error) {
-              dispatch({
-                type: UPDATE_TRANSACTION_STATUS,
-                payload: { type: "swap", hash: null, status: "failed" },
-              });
-            } else {
-              dispatch({
-                type: UPDATE_TRANSACTION_STATUS,
-                payload: { type: "swap", hash: transactionHash },
-              });
-            }
-          });
-      }
-
-      await swapPromise
-        .on("receipt", async function (receipt) {
-          dispatch({
-            type: UPDATE_TRANSACTION_STATUS,
-            payload: {
-              type: "swap",
-              status: "success",
-              result: { token0, token1 },
-            },
-          });
-        })
-        .on("error", async function (error) {
-          dispatch({
-            type: UPDATE_TRANSACTION_STATUS,
-            payload: { type: "swap", status: "failed" },
-          });
+        const path = currenSwapPath;
+        const toAddress = account;
+        const _deadlineUnix = getUnixTime(deadline);
+        dispatch({
+          type: SHOW_DEX_LOADING,
         });
-    } catch (error) {
-      console.log("swapTokens: ", error);
-    }
-    dispatch({
-      type: HIDE_DEX_LOADING,
-    });
-  };
+        dispatch({ type: START_TRANSACTION });
+
+        let swapPromise;
+        if (currentSwapFn === swapFnConstants.swapExactETHForTokens) {
+          //case 1 swapExactETHForTokens
+          swapPromise = _routerContract.methods
+            .swapExactETHForTokens(token1Min, path, toAddress, _deadlineUnix)
+            .send(
+              { from: account, value: token0In },
+              function (error, transactionHash) {
+                if (error) {
+                  dispatch({
+                    type: UPDATE_TRANSACTION_STATUS,
+                    payload: { type: "swap", hash: null, status: "failed" },
+                  });
+                } else {
+                  dispatch({
+                    type: UPDATE_TRANSACTION_STATUS,
+                    payload: { type: "swap", hash: transactionHash },
+                  });
+                }
+              }
+            );
+        } else if (currentSwapFn === swapFnConstants.swapETHforExactTokens) {
+          // case 2 swapETHforExactTokens
+          swapPromise = _routerContract.methods
+            .swapExactETHForTokens(token1Min, path, toAddress, _deadlineUnix)
+            .send(
+              { from: account, value: token0In },
+              function (error, transactionHash) {
+                if (error) {
+                  dispatch({
+                    type: UPDATE_TRANSACTION_STATUS,
+                    payload: { type: "swap", hash: null, status: "failed" },
+                  });
+                } else {
+                  dispatch({
+                    type: UPDATE_TRANSACTION_STATUS,
+                    payload: { type: "swap", hash: transactionHash },
+                  });
+                }
+              }
+            );
+        } else if (currentSwapFn === swapFnConstants.swapExactTokensForETH) {
+          // case 3 swapExactTokensForETH
+
+          swapPromise = _routerContract.methods
+            .swapExactTokensForETH(
+              token0In,
+              token1Min,
+              path,
+              toAddress,
+              _deadlineUnix
+            )
+            .send({ from: account }, function (error, transactionHash) {
+              if (error) {
+                dispatch({
+                  type: UPDATE_TRANSACTION_STATUS,
+                  payload: { type: "swap", hash: null, status: "failed" },
+                });
+              } else {
+                dispatch({
+                  type: UPDATE_TRANSACTION_STATUS,
+                  payload: { type: "swap", hash: transactionHash },
+                });
+              }
+            });
+        } else if (currentSwapFn === swapFnConstants.swapTokensForExactETH) {
+          // case 4  swapTokensForExactETH
+
+          swapPromise = _routerContract.methods
+            .swapExactTokensForETH(
+              token0In,
+              token1Min,
+              path,
+              toAddress,
+              _deadlineUnix
+            )
+            .send({ from: account }, function (error, transactionHash) {
+              if (error) {
+                dispatch({
+                  type: UPDATE_TRANSACTION_STATUS,
+                  payload: { type: "swap", hash: null, status: "failed" },
+                });
+              } else {
+                dispatch({
+                  type: UPDATE_TRANSACTION_STATUS,
+                  payload: { type: "swap", hash: transactionHash },
+                });
+              }
+            });
+        } else if (currentSwapFn === swapFnConstants.swapExactTokensForTokens) {
+          // case 5  swapExactTokensForTokens
+
+          swapPromise = _routerContract.methods
+            .swapExactTokensForTokens(
+              token0In,
+              token1Min,
+              path,
+              toAddress,
+              _deadlineUnix
+            )
+            .send({ from: account }, function (error, transactionHash) {
+              if (error) {
+                dispatch({
+                  type: UPDATE_TRANSACTION_STATUS,
+                  payload: { type: "swap", hash: null, status: "failed" },
+                });
+              } else {
+                dispatch({
+                  type: UPDATE_TRANSACTION_STATUS,
+                  payload: { type: "swap", hash: transactionHash },
+                });
+              }
+            });
+        } else {
+          // case 6 swapTokensForExactTokens
+
+          swapPromise = _routerContract.methods
+            .swapExactTokensForTokens(
+              token0In,
+              token1Min,
+              path,
+              toAddress,
+              _deadlineUnix
+            )
+            .send({ from: account }, function (error, transactionHash) {
+              if (error) {
+                dispatch({
+                  type: UPDATE_TRANSACTION_STATUS,
+                  payload: { type: "swap", hash: null, status: "failed" },
+                });
+              } else {
+                dispatch({
+                  type: UPDATE_TRANSACTION_STATUS,
+                  payload: { type: "swap", hash: transactionHash },
+                });
+              }
+            });
+        }
+
+        await swapPromise
+          .on("receipt", async function (receipt) {
+            dispatch({
+              type: UPDATE_TRANSACTION_STATUS,
+              payload: {
+                type: "swap",
+                status: "success",
+                result: { token0, token1 },
+              },
+            });
+          })
+          .on("error", async function (error) {
+            dispatch({
+              type: UPDATE_TRANSACTION_STATUS,
+              payload: { type: "swap", status: "failed" },
+            });
+          });
+      } catch (error) {
+        console.log("swapTokens: ", error);
+      }
+      dispatch({
+        type: HIDE_DEX_LOADING,
+      });
+    };
 
 //token0 : { name, symbol, amount }, token1: {name, symbol, amount }
 export const getPoolShare =
@@ -408,145 +408,145 @@ export const addLiquidityEth =
 //token1 { amount: "", address: "", desired:"", min:"" }
 export const removeLiquidity =
   (token0, token1, account, lpAmount, deadline, chainId) =>
-  async (dispatch) => {
-    try {
-      const _routerContract = routerContract(chainId);
+    async (dispatch) => {
+      try {
+        const _routerContract = routerContract(chainId);
 
-      dispatch({
-        type: SHOW_DEX_LOADING,
-      });
-      //input params
-
-      const token0AmountMin = "0";
-      const token1AmountMin = "0";
-
-      // deadline should be passed in minites in calculation
-      const _deadlineUnix = getUnixTime(deadline);
-
-      dispatch({ type: START_TRANSACTION });
-      await _routerContract.methods
-        .removeLiquidity(
-          token0.address,
-          token1.address,
-          lpAmount,
-          token0AmountMin,
-          token1AmountMin,
-          account,
-          _deadlineUnix
-        )
-        .send({ from: account }, function (error, transactionHash) {
-          if (error) {
-            dispatch({
-              type: UPDATE_TRANSACTION_STATUS,
-              payload: { type: "remove", hash: null, status: "failed" },
-            });
-          } else {
-            dispatch({
-              type: UPDATE_TRANSACTION_STATUS,
-              payload: { type: "remove", hash: transactionHash },
-            });
-          }
-        })
-        .on("receipt", async function (receipt) {
-          dispatch({
-            type: UPDATE_TRANSACTION_STATUS,
-            payload: {
-              type: "remove",
-              status: "success",
-              result: { token0, token1, lpAmount },
-            },
-          });
-        })
-        .on("error", async function (error) {
-          dispatch({
-            type: UPDATE_TRANSACTION_STATUS,
-            payload: { type: "remove", status: "failed" },
-          });
+        dispatch({
+          type: SHOW_DEX_LOADING,
         });
-    } catch (error) {
-      console.log("removeLiquidity: ", error);
-      dispatch({
-        type: DEX_ERROR,
-        payload: "Failed to remove liquidity",
-      });
-    }
+        //input params
 
-    dispatch({
-      type: HIDE_DEX_LOADING,
-    });
-  };
+        const token0AmountMin = "0";
+        const token1AmountMin = "0";
+
+        // deadline should be passed in minites in calculation
+        const _deadlineUnix = getUnixTime(deadline);
+
+        dispatch({ type: START_TRANSACTION });
+        await _routerContract.methods
+          .removeLiquidity(
+            token0.address,
+            token1.address,
+            lpAmount,
+            token0AmountMin,
+            token1AmountMin,
+            account,
+            _deadlineUnix
+          )
+          .send({ from: account }, function (error, transactionHash) {
+            if (error) {
+              dispatch({
+                type: UPDATE_TRANSACTION_STATUS,
+                payload: { type: "remove", hash: null, status: "failed" },
+              });
+            } else {
+              dispatch({
+                type: UPDATE_TRANSACTION_STATUS,
+                payload: { type: "remove", hash: transactionHash },
+              });
+            }
+          })
+          .on("receipt", async function (receipt) {
+            dispatch({
+              type: UPDATE_TRANSACTION_STATUS,
+              payload: {
+                type: "remove",
+                status: "success",
+                result: { token0, token1, lpAmount },
+              },
+            });
+          })
+          .on("error", async function (error) {
+            dispatch({
+              type: UPDATE_TRANSACTION_STATUS,
+              payload: { type: "remove", status: "failed" },
+            });
+          });
+      } catch (error) {
+        console.log("removeLiquidity: ", error);
+        dispatch({
+          type: DEX_ERROR,
+          payload: "Failed to remove liquidity",
+        });
+      }
+
+      dispatch({
+        type: HIDE_DEX_LOADING,
+      });
+    };
 
 //token0: { amount: "", address: "", desired:"", min:"" }
 //token1 { amount: "", address: "", desired:"", min:"" }
 export const removeLiquidityEth =
   (ethToken, erc20Token, account, lpAmount, deadline, chainId) =>
-  async (dispatch) => {
-    try {
-      const _routerContract = routerContract(chainId);
+    async (dispatch) => {
+      try {
+        const _routerContract = routerContract(chainId);
+
+        dispatch({
+          type: SHOW_DEX_LOADING,
+        });
+
+        const erc20Address = erc20Token.address;
+        const etherAmountMin = "0";
+        const tokenAmountMin = "0";
+        const lpTokenAmount = lpAmount;
+
+        // deadline should be passed in minites in calculation
+        const _deadlineUnix = getUnixTime(deadline);
+
+        dispatch({ type: START_TRANSACTION });
+        await _routerContract.methods
+          .removeLiquidityETH(
+            erc20Address,
+            lpTokenAmount,
+            tokenAmountMin,
+            etherAmountMin,
+            account,
+            _deadlineUnix
+          )
+          .send({ from: account }, function (error, transactionHash) {
+            if (error) {
+              dispatch({
+                type: UPDATE_TRANSACTION_STATUS,
+                payload: { type: "remove", hash: null, status: "failed" },
+              });
+            } else {
+              dispatch({
+                type: UPDATE_TRANSACTION_STATUS,
+                payload: { type: "remove", hash: transactionHash },
+              });
+            }
+          })
+          .on("receipt", async function (receipt) {
+            dispatch({
+              type: UPDATE_TRANSACTION_STATUS,
+              payload: {
+                type: "remove",
+                status: "success",
+                result: {
+                  token0: ethToken,
+                  token1: erc20Token,
+                  lpToken: lpTokenAmount,
+                },
+              },
+            });
+          })
+          .on("error", async function (error) {
+            dispatch({
+              type: UPDATE_TRANSACTION_STATUS,
+              payload: { type: "remove", status: "failed" },
+            });
+          });
+      } catch (error) {
+        console.log("removeLiquidityEth: ", error);
+      }
 
       dispatch({
-        type: SHOW_DEX_LOADING,
+        type: HIDE_DEX_LOADING,
       });
-
-      const erc20Address = erc20Token.address;
-      const etherAmountMin = "0";
-      const tokenAmountMin = "0";
-      const lpTokenAmount = lpAmount;
-
-      // deadline should be passed in minites in calculation
-      const _deadlineUnix = getUnixTime(deadline);
-
-      dispatch({ type: START_TRANSACTION });
-      await _routerContract.methods
-        .removeLiquidityETH(
-          erc20Address,
-          lpTokenAmount,
-          tokenAmountMin,
-          etherAmountMin,
-          account,
-          _deadlineUnix
-        )
-        .send({ from: account }, function (error, transactionHash) {
-          if (error) {
-            dispatch({
-              type: UPDATE_TRANSACTION_STATUS,
-              payload: { type: "remove", hash: null, status: "failed" },
-            });
-          } else {
-            dispatch({
-              type: UPDATE_TRANSACTION_STATUS,
-              payload: { type: "remove", hash: transactionHash },
-            });
-          }
-        })
-        .on("receipt", async function (receipt) {
-          dispatch({
-            type: UPDATE_TRANSACTION_STATUS,
-            payload: {
-              type: "remove",
-              status: "success",
-              result: {
-                token0: ethToken,
-                token1: erc20Token,
-                lpToken: lpTokenAmount,
-              },
-            },
-          });
-        })
-        .on("error", async function (error) {
-          dispatch({
-            type: UPDATE_TRANSACTION_STATUS,
-            payload: { type: "remove", status: "failed" },
-          });
-        });
-    } catch (error) {
-      console.log("removeLiquidityEth: ", error);
-    }
-
-    dispatch({
-      type: HIDE_DEX_LOADING,
-    });
-  };
+    };
 
 // token: { symbol, name, address, abi }
 export const checkAllowance = (token, account, chainId) => async (dispatch) => {
@@ -688,62 +688,62 @@ export const checkLpAllowance =
 
 export const confirmLPAllowance =
   (balance, token0, token1, pairAddress, account, chainId) =>
-  async (dispatch) => {
-    dispatch({
-      type: SHOW_DEX_LOADING,
-    });
+    async (dispatch) => {
+      dispatch({
+        type: SHOW_DEX_LOADING,
+      });
 
-    try {
-      const _pairContract = pairContract(pairAddress, chainId);
-      const _routerAddress = ROUTER_ADDRESS?.[chainId];
+      try {
+        const _pairContract = pairContract(pairAddress, chainId);
+        const _routerAddress = ROUTER_ADDRESS?.[chainId];
 
-      await _pairContract.methods
-        .approve(_routerAddress, balance)
-        .send({ from: account }, function (error, transactionHash) {
-          if (error) {
+        await _pairContract.methods
+          .approve(_routerAddress, balance)
+          .send({ from: account }, function (error, transactionHash) {
+            if (error) {
+              dispatch({
+                type: UPDATE_TRANSACTION_STATUS,
+                payload: {
+                  type: "lp_token_approve",
+                  hash: null,
+                  status: "failed",
+                },
+              });
+            } else {
+              dispatch({
+                type: UPDATE_TRANSACTION_STATUS,
+                payload: { type: "lp_token_approve", hash: transactionHash },
+              });
+            }
+          })
+          .on("receipt", async function (receipt) {
             dispatch({
               type: UPDATE_TRANSACTION_STATUS,
               payload: {
                 type: "lp_token_approve",
-                hash: null,
-                status: "failed",
+                status: "success",
+                result: {}, // add result data
               },
             });
-          } else {
+          })
+          .on("error", async function (error) {
             dispatch({
               type: UPDATE_TRANSACTION_STATUS,
-              payload: { type: "lp_token_approve", hash: transactionHash },
+              payload: { type: "lp_token_approve", status: "failed" },
             });
-          }
-        })
-        .on("receipt", async function (receipt) {
-          dispatch({
-            type: UPDATE_TRANSACTION_STATUS,
-            payload: {
-              type: "lp_token_approve",
-              status: "success",
-              result: {}, // add result data
-            },
           });
-        })
-        .on("error", async function (error) {
-          dispatch({
-            type: UPDATE_TRANSACTION_STATUS,
-            payload: { type: "lp_token_approve", status: "failed" },
-          });
-        });
 
+        dispatch({
+          type: APPROVE_LP_TOKENS,
+          payload: { pair: `${token0.symbol}_${token1.symbol}`, status: true },
+        });
+      } catch (error) {
+        console.log("confirmLPAllowance ", error);
+      }
       dispatch({
-        type: APPROVE_LP_TOKENS,
-        payload: { pair: `${token0.symbol}_${token1.symbol}`, status: true },
+        type: HIDE_DEX_LOADING,
       });
-    } catch (error) {
-      console.log("confirmLPAllowance ", error);
-    }
-    dispatch({
-      type: HIDE_DEX_LOADING,
-    });
-  };
+    };
 
 // load token list to be selected
 const localTokenList = {
@@ -752,7 +752,7 @@ const localTokenList = {
   // 56: tokenListBsc,
   // 97: testTokens.bsc,
   // 80001:mumbaitokens
-  324: zksynctokens
+  280: zksynctokens
 };
 export const loadTokens = (chainId) => async (dispatch) => {
   try {
@@ -762,7 +762,7 @@ export const loadTokens = (chainId) => async (dispatch) => {
 
     // todo: fetch token list from network
     // const localTokens = localTokenList?.[!chainId ? 80001 : chainId];
-    const localTokens = localTokenList?.[!chainId ? 324 : chainId];
+    const localTokens = localTokenList?.[!chainId ? 280 : chainId];
 
     const cachedTokens = getCachedTokens();
     const allTokens =
